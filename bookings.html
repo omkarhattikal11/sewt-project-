@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Bookings</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f5efe6;
+    padding:30px;
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 15px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>My Bookings</h2>
+
+<div id="list"></div>
+
+<button onclick="goBack()">Back</button>
+
+<script>
+
+// 🔒 protect
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href="login.html";
+}
+
+let user = localStorage.getItem("email");
+let data = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+let my = data.filter(x => x.user === user);
+
+if(my.length === 0){
+    document.getElementById("list").innerHTML = "No bookings yet";
+}else{
+    my.forEach(b=>{
+        document.getElementById("list").innerHTML += `
+        <div class="card">
+            <b>${b.item}</b><br>
+            Type: ${b.type}<br>
+            Date: ${b.date}
+        </div>`;
+    });
+}
+
+function goBack(){
+    window.location.href="home.html";
+}
+
+</script>
+
+</body>
+</html>
