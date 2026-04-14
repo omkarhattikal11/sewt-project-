@@ -35,10 +35,31 @@ body {
   padding: 40px;
 }
 
+/* 🔥 BIGGER VIVIENNE */
+.brand {
+  text-align: center;
+  font-size: 42px;   /* increased */
+  font-weight: bold;
+  color: purple;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+}
+
+/* logo */
+.logo-img {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* 🔥 SMALLER CREATE ACCOUNT */
 h1 {
-  font-size: 28px;
+  font-size: 20px;   /* reduced */
   margin-bottom: 20px;
   color: #b03060;
+  text-align: center;
 }
 
 .field {
@@ -93,12 +114,13 @@ button {
 <div class="main">
 <div class="container">
 
-<!-- LEFT -->
 <div class="left">
+
+<img class="logo-img" src="https://i.pinimg.com/736x/d9/b9/93/d9b993d8eecfeb1f669f1a30f66030cb.jpg" alt="Logo">
+<div class="brand">VIVIENNE</div>
 
 <h1 id="title">Create Account</h1>
 
-<!-- REGISTER -->
 <div id="registerBox">
   <div class="field"><input type="text" placeholder="Name" id="name"></div>
   <div class="field"><input type="email" placeholder="Email" id="email"></div>
@@ -112,7 +134,6 @@ button {
   </p>
 </div>
 
-<!-- LOGIN -->
 <div id="loginBox" style="display:none;">
   <div class="field"><input type="email" id="loginEmail" placeholder="Email"></div>
   <div class="field"><input type="password" id="loginPassword" placeholder="Password"></div>
@@ -127,7 +148,6 @@ button {
 
 </div>
 
-<!-- RIGHT -->
 <div class="right">
   <img id="slider" src="">
 </div>
@@ -136,8 +156,6 @@ button {
 </div>
 
 <script>
-
-// IMAGE SLIDER
 let images = [
   "https://i.pinimg.com/736x/33/95/2d/33952d048f576dbf161cdcafb4c09a0d.jpg",
   "https://i.pinimg.com/736x/34/95/87/3495876ebb5db6669f6e0b4b30541032.jpg",
@@ -157,7 +175,6 @@ setInterval(() => {
   }, 300);
 }, 2000);
 
-// REGISTER
 function register() {
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
@@ -176,7 +193,6 @@ function register() {
   showLogin();
 }
 
-// LOGIN
 function login() {
   let email = document.getElementById("loginEmail").value;
   let pass = document.getElementById("loginPassword").value;
@@ -184,17 +200,16 @@ function login() {
   if (email === localStorage.getItem("email") &&
       pass === localStorage.getItem("password")) {
 
-    localStorage.setItem("loggedIn", "true"); // ✅ important
+    localStorage.setItem("loggedIn", "true");
 
     alert("Welcome 🎉 " + localStorage.getItem("name"));
 
-    window.location.href = "home.html"; // ✅ link to home
+    window.location.href = "home.html";
   } else {
     alert("Invalid login");
   }
 }
 
-// TOGGLE
 function showLogin() {
   document.getElementById("registerBox").style.display = "none";
   document.getElementById("loginBox").style.display = "block";
@@ -206,7 +221,6 @@ function showRegister() {
   document.getElementById("loginBox").style.display = "none";
   document.getElementById("title").innerText = "Create Account";
 }
-
 </script>
 
 </body>
