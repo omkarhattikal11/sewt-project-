@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rent it</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background: #f5efe6;
+            color: #2c2c2c;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: #fbf7f1;
+            border-bottom: 1px solid #e6dccc;
+        }
+
+        .logo {
+            font-size: 24px;
+            color: #6b4f2a;
+            font-weight: 600;
+        }
+
+        .search input {
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #d6c3a3;
+            width: 260px;
+            background: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .nav-links div {
+            cursor: pointer;
+        }
+
+        .hero {
+            height: 70vh;
+            background: 
+                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+                url('https://images.unsplash.com/photo-1519225421980-715cb0215aed') center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            color: #f8f5f0;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+        }
+
+        .hero p {
+            margin-top: 10px;
+            color: #e6dccc;
+        }
+
+        .section {
+            margin: 60px;
+        }
+
+        .section h2 {
+            margin-bottom: 25px;
+            color: #3e2f1c;
+        }
+
+        .cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 260px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e6dccc;
+            transition: 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .price {
+            color: #6b4f2a;
+            font-weight: bold;
+        }
+
+        .btn {
+            margin-top: 10px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid #6b4f2a;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #6b4f2a;
+            color: white;
+        }
+
+        input[type="date"] {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #2c2c2c;
+            color: #d6c3a3;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">Rent it</div>
+
+    <div class="search">
+        <input placeholder="Search rentals, services, halls...">
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <!-- Dynamic -->
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Luxury Rentals & Elegant Celebrations</h1>
+        <p>Curated experiences for your special moments</p>
+    </div>
+</div>
+
+<!-- RENTALS -->
+<div class="section">
+    <h2>Featured Rentals</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c">
+            <div class="card-content">
+                Designer Dress <br>
+                <div class="price">₹200/day</div>
+                <input type="date" id="date1">
+                <button class="btn" onclick="rentItem('Dress','date1')">Rent</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb">
+            <div class="card-content">
+                Wedding Outfit <br>
+                <div class="price">₹500/day</div>
+                <input type="date" id="date2">
+                <button class="btn" onclick="rentItem('Wedding Outfit','date2')">Rent</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- BEAUTY -->
+<div class="section">
+    <h2>Beauty Services</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+            <div class="card-content">
+                Bridal Makeup <br>
+                <div class="price">₹3000</div>
+                <input type="date" id="date3">
+                <button class="btn" onclick="bookService('Bridal Makeup','date3')">Book</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
+            <div class="card-content">
+                Party Makeup <br>
+                <div class="price">₹1500</div>
+                <input type="date" id="date4">
+                <button class="btn" onclick="bookService('Party Makeup','date4')">Book</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- HALLS -->
+<div class="section">
+    <h2>Event Halls</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622">
+            <div class="card-content">
+                Grand Wedding Hall <br>
+                <div class="price">₹50,000/day</div>
+                <input type="date" id="date5">
+                <button class="btn" onclick="bookHall('Wedding Hall','date5')">Book</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84">
+            <div class="card-content">
+                Birthday Party Hall <br>
+                <div class="price">₹10,000/day</div>
+                <input type="date" id="date6">
+                <button class="btn" onclick="bookHall('Birthday Hall','date6')">Book</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 RentalHub — Premium Rental Experience
+</div>
+
+<script>
+
+// 🔒 PROTECT PAGE
+if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+}
+
+// 👤 SHOW USER + LOGOUT
+let name = localStorage.getItem("name");
+
+document.getElementById("navLinks").innerHTML = `
+    <div>Hi, ${name}</div>
+    <div onclick="logout()">Logout</div>
+`;
+
+// LOGOUT
+function logout() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "login.html";
+}
+
+// FUNCTIONS
+function rentItem(item, dateId){
+    let date = document.getElementById(dateId).value;
+    alert(item + " booked on " + date);
+}
+
+function bookService(service, dateId){
+    let date = document.getElementById(dateId).value;
+    alert(service + " booked on " + date);
+}
+
+function bookHall(hall, dateId){
+    let date = document.getElementById(dateId).value;
+    alert(hall + " booked on " + date);
+}
+
+</script>
+
+</body>
+</html>
