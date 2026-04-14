@@ -23,8 +23,23 @@ h2{
 }
 
 button{
+    margin-top:10px;
+    padding:8px 12px;
+    background:red;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.8;
+}
+
+.back-btn{
     margin-top:20px;
-    padding:10px 15px;
+    background:#333;
+    color:white;
 }
 </style>
 </head>
@@ -35,11 +50,11 @@ button{
 
 <div id="list"></div>
 
-<button onclick="goBack()">Back</button>
+<button class="back-btn" onclick="goBack()">Back</button>
 
 <script>
 
-// 🔒 protect
+// 🔒 protect page
 if(localStorage.getItem("loggedIn") !== "true"){
     window.location.href="login.html";
 }
@@ -47,24 +62,55 @@ if(localStorage.getItem("loggedIn") !== "true"){
 let user = localStorage.getItem("email");
 let data = JSON.parse(localStorage.getItem("bookings") || "[]");
 
-let my = data.filter(x => x.user === user);
+// show bookings
+function showBookings(){
+    let list = document.getElementById("list");
+    list.innerHTML = "";
 
-if(my.length === 0){
-    document.getElementById("list").innerHTML = "No bookings yet";
-}else{
-    my.forEach(b=>{
-        document.getElementById("list").innerHTML += `
+    let userBookings = data.filter(x => x.user === user);
+
+    if(userBookings.length === 0){
+        list.innerHTML = "No bookings yet";
+        return;
+    }
+
+    userBookings.forEach((b, index) => {
+        list.innerHTML += `
         <div class="card">
             <b>${b.item}</b><br>
             Type: ${b.type}<br>
-            Date: ${b.date}
+            Date: ${b.date}<br>
+
+            <button onclick="cancelBooking(${index})">Cancel Booking</button>
         </div>`;
     });
 }
 
+// ❌ cancel booking
+function cancelBooking(i){
+    let confirmCancel = confirm("Are you sure you want to cancel this booking?");
+    
+    if(confirmCancel){
+        let userBookings = data.filter(x => x.user === user);
+
+        let target = userBookings[i];
+
+        // remove from main storage
+        data = data.filter(b => b !== target);
+
+        localStorage.setItem("bookings", JSON.stringify(data));
+
+        showBookings(); // refresh UI
+    }
+}
+
+// 🔙 back button
 function goBack(){
     window.location.href="home.html";
 }
+
+// initial load
+showBookings();
 
 </script>
 
