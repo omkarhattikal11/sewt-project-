@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(to right, #ffd6e0, #ffc0cb);
+}
+
+/* CENTER EVERYTHING */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* CARD */
+.container {
+  display: flex;
+  width: 900px;
+  height: 550px;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* LEFT */
+.left {
+  width: 50%;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #b03060;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* BUTTON BASE */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* REGISTER BUTTON */
+.register-btn {
+  background: linear-gradient(to right, #ff6f91, #ff9eb5);
+}
+
+.register-btn:hover {
+  box-shadow: 0 0 10px #ff6f91;
+  transform: scale(1.05);
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+  background: linear-gradient(to right, #8e44ad, #c39bd3);
+}
+
+.login-btn:hover {
+  box-shadow: 0 0 10px #8e44ad;
+  transform: scale(1.05);
+}
+
+.login-link {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* RIGHT IMAGE */
+.right {
+  width: 50%;
+}
+
+.right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="main">
+<div class="container">
+
+<!-- LEFT -->
+<div class="left">
+
+<h1 id="title">Create Account</h1>
+
+<!-- REGISTER -->
+<div id="registerBox">
+  <div class="field"><input type="text" placeholder="Name" id="name"></div>
+  <div class="field"><input type="email" placeholder="Email" id="email"></div>
+  <div class="field"><input type="password" id="password" placeholder="Password"></div>
+
+  <button class="register-btn" onclick="register()">Sign Up</button>
+
+  <p class="login-link">
+    Already have account?
+    <a href="#" onclick="showLogin()">Login</a>
+  </p>
+</div>
+
+<!-- LOGIN -->
+<div id="loginBox" style="display:none;">
+  <div class="field"><input type="email" id="loginEmail" placeholder="Email"></div>
+  <div class="field"><input type="password" id="loginPassword" placeholder="Password"></div>
+
+  <button class="login-btn" onclick="login()">Login</button>
+
+  <p class="login-link">
+    New user?
+    <a href="#" onclick="showRegister()">Register</a>
+  </p>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+  <img id="slider" src="">
+</div>
+
+</div>
+</div>
+
+<script>
+
+// Images
+let images = [
+  "https://i.pinimg.com/736x/33/95/2d/33952d048f576dbf161cdcafb4c09a0d.jpg",
+  "https://i.pinimg.com/736x/34/95/87/3495876ebb5db6669f6e0b4b30541032.jpg",
+  "https://i.pinimg.com/1200x/4e/94/0b/4e940bba5637210c36728346a61549ff.jpg",
+  "https://i.pinimg.com/736x/f2/40/76/f240762c2bcd5306f8565366bff38809.jpg",
+  "https://i.pinimg.com/736x/ad/03/b7/ad03b7efff535c7e50668680cb60eb9a.jpg",
+  "https://i.pinimg.com/736x/36/4f/5b/364f5bb836076a2f3ddc6a835eb8afd7.jpg"
+];
+
+let i = 0;
+let slider = document.getElementById("slider");
+
+slider.src = images[i];
+
+// Auto slider
+setInterval(() => {
+  slider.style.opacity = 0;
+
+  setTimeout(() => {
+    i = (i + 1) % images.length;
+    slider.src = images[i];
+    slider.style.opacity = 1;
+  }, 300);
+
+}, 2000);
+
+// Register
+function register() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+
+  if (!name || !email || !pass) {
+    alert("Fill all fields");
+    return;
+  }
+
+  localStorage.setItem("name", name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("password", pass);
+
+  alert("Registered Successfully 💖");
+  showLogin();
+}
+
+// Login
+function login() {
+  let email = document.getElementById("loginEmail").value;
+  let pass = document.getElementById("loginPassword").value;
+
+  if (email === localStorage.getItem("email") &&
+      pass === localStorage.getItem("password")) {
+    alert("Welcome 🎉 " + localStorage.getItem("name"));
+  } else {
+    alert("Invalid login");
+  }
+}
+
+// Toggle
+function showLogin() {
+  document.getElementById("registerBox").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
+  document.getElementById("title").innerText = "Welcome Back";
+}
+
+function showRegister() {
+  document.getElementById("registerBox").style.display = "block";
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("title").innerText = "Create Account";
+}
+
+</script>
+
+</body>
+</html>
