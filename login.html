@@ -12,7 +12,6 @@ body {
   background: linear-gradient(to right, #ffd6e0, #ffc0cb);
 }
 
-/* CENTER EVERYTHING */
 .main {
   display: flex;
   justify-content: center;
@@ -20,7 +19,6 @@ body {
   height: 100vh;
 }
 
-/* CARD */
 .container {
   display: flex;
   width: 900px;
@@ -32,7 +30,6 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* LEFT */
 .left {
   width: 50%;
   padding: 40px;
@@ -53,10 +50,8 @@ input {
   padding: 12px;
   border-radius: 10px;
   border: none;
-  outline: none;
 }
 
-/* BUTTON BASE */
 button {
   width: 100%;
   padding: 12px;
@@ -65,28 +60,14 @@ button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
-  transition: 0.3s;
 }
 
-/* REGISTER BUTTON */
 .register-btn {
   background: linear-gradient(to right, #ff6f91, #ff9eb5);
 }
 
-.register-btn:hover {
-  box-shadow: 0 0 10px #ff6f91;
-  transform: scale(1.05);
-}
-
-/* LOGIN BUTTON */
 .login-btn {
   background: linear-gradient(to right, #8e44ad, #c39bd3);
-}
-
-.login-btn:hover {
-  box-shadow: 0 0 10px #8e44ad;
-  transform: scale(1.05);
 }
 
 .login-link {
@@ -94,7 +75,6 @@ button {
   margin-top: 10px;
 }
 
-/* RIGHT IMAGE */
 .right {
   width: 50%;
 }
@@ -103,10 +83,9 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s;
 }
 </style>
-
 </head>
 
 <body>
@@ -158,34 +137,27 @@ button {
 
 <script>
 
-// Images
+// IMAGE SLIDER
 let images = [
   "https://i.pinimg.com/736x/33/95/2d/33952d048f576dbf161cdcafb4c09a0d.jpg",
   "https://i.pinimg.com/736x/34/95/87/3495876ebb5db6669f6e0b4b30541032.jpg",
-  "https://i.pinimg.com/1200x/4e/94/0b/4e940bba5637210c36728346a61549ff.jpg",
-  "https://i.pinimg.com/736x/f2/40/76/f240762c2bcd5306f8565366bff38809.jpg",
-  "https://i.pinimg.com/736x/ad/03/b7/ad03b7efff535c7e50668680cb60eb9a.jpg",
-  "https://i.pinimg.com/736x/36/4f/5b/364f5bb836076a2f3ddc6a835eb8afd7.jpg"
+  "https://i.pinimg.com/1200x/4e/94/0b/4e940bba5637210c36728346a61549ff.jpg"
 ];
 
 let i = 0;
 let slider = document.getElementById("slider");
-
 slider.src = images[i];
 
-// Auto slider
 setInterval(() => {
   slider.style.opacity = 0;
-
   setTimeout(() => {
     i = (i + 1) % images.length;
     slider.src = images[i];
     slider.style.opacity = 1;
   }, 300);
-
 }, 2000);
 
-// Register
+// REGISTER
 function register() {
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
@@ -204,20 +176,25 @@ function register() {
   showLogin();
 }
 
-// Login
+// LOGIN
 function login() {
   let email = document.getElementById("loginEmail").value;
   let pass = document.getElementById("loginPassword").value;
 
   if (email === localStorage.getItem("email") &&
       pass === localStorage.getItem("password")) {
+
+    localStorage.setItem("loggedIn", "true"); // ✅ important
+
     alert("Welcome 🎉 " + localStorage.getItem("name"));
+
+    window.location.href = "home.html"; // ✅ link to home
   } else {
     alert("Invalid login");
   }
 }
 
-// Toggle
+// TOGGLE
 function showLogin() {
   document.getElementById("registerBox").style.display = "none";
   document.getElementById("loginBox").style.display = "block";
