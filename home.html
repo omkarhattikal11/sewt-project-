@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,9 +159,7 @@
         <input placeholder="Search rentals, services, halls...">
     </div>
 
-    <div class="nav-links" id="navLinks">
-        <!-- Dynamic -->
-    </div>
+    <div class="nav-links" id="navLinks"></div>
 </div>
 
 <!-- HERO -->
@@ -272,11 +269,12 @@ if (localStorage.getItem("loggedIn") !== "true") {
     window.location.href = "login.html";
 }
 
-// 👤 SHOW USER + LOGOUT
+// 👤 NAVBAR
 let name = localStorage.getItem("name");
 
 document.getElementById("navLinks").innerHTML = `
     <div>Hi, ${name}</div>
+    <div onclick="viewBookings()">My Bookings</div>
     <div onclick="logout()">Logout</div>
 `;
 
@@ -286,20 +284,64 @@ function logout() {
     window.location.href = "login.html";
 }
 
-// FUNCTIONS
-function rentItem(item, dateId){
-    let date = document.getElementById(dateId).value;
-    alert(item + " booked on " + date);
+// VIEW BOOKINGS
+function viewBookings(){
+    window.location.href = "bookings.html";
 }
 
-function bookService(service, dateId){
-    let date = document.getElementById(dateId).value;
-    alert(service + " booked on " + date);
+// GET DATA
+function getBookings(){
+    return JSON.parse(localStorage.getItem("bookings") || "[]");
 }
 
-function bookHall(hall, dateId){
-    let date = document.getElementById(dateId).value;
-    alert(hall + " booked on " + date);
+// SAVE BOOKING
+function saveBooking(type, item, date){
+    let data = getBookings();
+    let user = localStorage.getItem("email");
+
+    if(!date){
+        alert("Please select a date");
+        return false;
+    }
+
+    let exists = data.find(x =>
+        x.type === type &&
+        x.item === item &&
+        x.date === date
+    );
+
+    if(exists){
+        alert("Already booked!");
+        return false;
+    }
+
+    data.push({ type, item, date, user });
+
+    localStorage.setItem("bookings", JSON.stringify(data));
+
+    return true;
+}
+
+// ACTIONS
+function rentItem(item, id){
+    let date = document.getElementById(id).value;
+    if(saveBooking("Rental", item, date)){
+        alert(item + " booked on " + date);
+    }
+}
+
+function bookService(item, id){
+    let date = document.getElementById(id).value;
+    if(saveBooking("Service", item, date)){
+        alert(item + " booked on " + date);
+    }
+}
+
+function bookHall(item, id){
+    let date = document.getElementById(id).value;
+    if(saveBooking("Hall", item, date)){
+        alert(item + " booked on " + date);
+    }
 }
 
 </script>
