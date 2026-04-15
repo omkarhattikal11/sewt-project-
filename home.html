@@ -386,31 +386,7 @@ html+=`<div class="card skeleton skeleton-card"></div>`;
 }
 document.getElementById("products").innerHTML=html;
 }
-let page = 1;
 
-window.addEventListener("scroll",()=>{
-if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 50){
-loadMore();
-}
-});
-
-function loadMore(){
-let cat = document.querySelector(".cat.active p").innerText;
-let html="";
-
-for(let i=0;i<4;i++){
-let item = data[current][cat][i % data[current][cat].length];
-
-html+=`
-<div class="card fade-in">
-<img src="${productImages[item]}" loading="lazy">
-<h4>${item}</h4>
-<button>Rent</button>
-</div>`;
-}
-
-document.getElementById("products").innerHTML += html;
-}
 </script>
 
 </body>
