@@ -118,7 +118,51 @@ will-change: transform;
 .card:hover{
 transform:translateY(-5px);
 }
+.skeleton{
+background: linear-gradient(90deg,#eee,#f5f5f5,#eee);
+background-size:200% 100%;
+animation: shimmer 1.2s infinite;
+border-radius:10px;
+}
 
+@keyframes shimmer{
+0%{background-position:-200% 0;}
+100%{background-position:200% 0;}
+}
+
+.skeleton-card{
+height:220px;
+}
+.fade-in{
+opacity:0;
+transform:translateY(10px);
+animation:fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+html{
+scroll-behavior:smooth;
+}
+button{
+transition:0.2s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.cat{
+transition:0.2s;
+}
+
+.cat:hover{
+transform:scale(1.08);
+}
 </style>
 </head>
 
@@ -335,7 +379,38 @@ element.classList.add("active");
 // load products
 loadProducts(cat);
 }
+function showSkeleton(){
+let html="";
+for(let i=0;i<6;i++){
+html+=`<div class="card skeleton skeleton-card"></div>`;
+}
+document.getElementById("products").innerHTML=html;
+}
+let page = 1;
 
+window.addEventListener("scroll",()=>{
+if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 50){
+loadMore();
+}
+});
+
+function loadMore(){
+let cat = document.querySelector(".cat.active p").innerText;
+let html="";
+
+for(let i=0;i<4;i++){
+let item = data[current][cat][i % data[current][cat].length];
+
+html+=`
+<div class="card fade-in">
+<img src="${productImages[item]}" loading="lazy">
+<h4>${item}</h4>
+<button>Rent</button>
+</div>`;
+}
+
+document.getElementById("products").innerHTML += html;
+}
 </script>
 
 </body>
