@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Page</title>
 
-<!-- ✅ GOOGLE FONT (HEEBO) -->
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -30,7 +29,6 @@ body {
   backdrop-filter: blur(12px);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .left {
@@ -38,38 +36,32 @@ body {
   padding: 40px;
 }
 
-/* 🔥 VIVIENNE UPDATED FONT STYLE */
 .brand {
   text-align: center;
-  font-size: 48px;   /* slightly bigger */
+  font-size: 40px;
   font-weight: 700;
   color: purple;
   margin-bottom: 10px;
   letter-spacing: 4px;
-
-  font-family:Georgia, 'Times New Roman', Times, serif;
- 
 }
 
 .logo-img {
   display: block;
-  margin: 0 auto 15px auto;
-  width: 120px;
-  height: auto;
+  margin: 0 auto 10px auto;
+  width: 100px;
   border-radius: 10px;
 }
 
-/* Create Account smaller */
 h1 {
   font-size: 20px;
   margin-bottom: 20px;
   color: #b03060;
   text-align: center;
-  
 }
 
 .field {
   margin-bottom: 15px;
+  position: relative;
 }
 
 input {
@@ -77,6 +69,13 @@ input {
   padding: 12px;
   border-radius: 10px;
   border: none;
+}
+
+.toggle {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  cursor: pointer;
 }
 
 button {
@@ -90,16 +89,11 @@ button {
 }
 
 .register-btn {
-  background: linear-gradient(to right, #ff6f91, #ff9eb5);
+  background: #ff6f91;
 }
 
 .login-btn {
-  background: linear-gradient(to right, #8e44ad, #c39bd3);
-}
-
-.login-link {
-  font-size: 13px;
-  margin-top: 10px;
+  background: #8e44ad;
 }
 
 .right {
@@ -110,7 +104,6 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s;
 }
 </style>
 </head>
@@ -122,49 +115,54 @@ button {
 
 <div class="left">
 
-<img class="logo-img" src="https://i.pinimg.com/736x/d9/b9/93/d9b993d8eecfeb1f669f1a30f66030cb.jpg" alt="Logo">
+<img class="logo-img" src="https://i.pinimg.com/736x/d9/b9/93/d9b993d8eecfeb1f669f1a30f66030cb.jpg">
 
 <div class="brand">VIVIENNE</div>
 
 <h1 id="title">Create Account</h1>
 
+<!-- REGISTER -->
 <div id="registerBox">
   <div class="field"><input type="text" placeholder="Name" id="name"></div>
   <div class="field"><input type="email" placeholder="Email" id="email"></div>
-  <div class="field"><input type="password" id="password" placeholder="Password"></div>
+  
+  <div class="field">
+    <input type="password" id="password" placeholder="Password">
+    <span class="toggle" onclick="togglePass('password')">👁</span>
+  </div>
 
   <button class="register-btn" onclick="register()">Sign Up</button>
 
-  <p class="login-link">
-    Already have account?
-    <a href="#" onclick="showLogin()">Login</a>
-  </p>
+  <p>Already have account? <a href="#" onclick="showLogin()">Login</a></p>
 </div>
 
+<!-- LOGIN -->
 <div id="loginBox" style="display:none;">
   <div class="field"><input type="email" id="loginEmail" placeholder="Email"></div>
-  <div class="field"><input type="password" id="loginPassword" placeholder="Password"></div>
+
+  <div class="field">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <span class="toggle" onclick="togglePass('loginPassword')">👁</span>
+  </div>
 
   <button class="login-btn" onclick="login()">Login</button>
 
-  <p class="login-link">
-    New user?
-    <a href="#" onclick="showRegister()">Register</a>
-  </p>
+  <p>New user? <a href="#" onclick="showRegister()">Register</a></p>
 </div>
 
 </div>
 
 <div class="right">
-  <img id="slider" src="">
+<img id="slider">
 </div>
 
 </div>
 </div>
 
 <script>
+// IMAGE SLIDER
 let images = [
-  "https://i.pinimg.com/736x/33/95/2d/33952d048f576dbf161cdcafb4c09a0d.jpg",
+ "https://i.pinimg.com/736x/33/95/2d/33952d048f576dbf161cdcafb4c09a0d.jpg",
   "https://i.pinimg.com/736x/34/95/87/3495876ebb5db6669f6e0b4b30541032.jpg",
   "https://i.pinimg.com/1200x/4e/94/0b/4e940bba5637210c36728346a61549ff.jpg",
   "https://i.pinimg.com/736x/f2/40/76/f240762c2bcd5306f8565366bff38809.jpg",
@@ -172,64 +170,86 @@ let images = [
   "https://i.pinimg.com/736x/36/4f/5b/364f5bb836076a2f3ddc6a835eb8afd7.jpg"
 ];
 
-let i = 0;
-let slider = document.getElementById("slider");
-slider.src = images[i];
+let i=0;
+let slider=document.getElementById("slider");
+slider.src=images[0];
 
-setInterval(() => {
-  slider.style.opacity = 0;
-  setTimeout(() => {
-    i = (i + 1) % images.length;
-    slider.src = images[i];
-    slider.style.opacity = 1;
-  }, 300);
-}, 2000);
+setInterval(()=>{
+  i=(i+1)%images.length;
+  slider.src=images[i];
+},2000);
 
-function register() {
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
+// VALIDATION FUNCTIONS
+function validEmail(email){
+  return /^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email);
+}
 
-  if (!name || !email || !pass) {
-    alert("Fill all fields");
+function validPassword(pass){
+  return pass.length>=8 && /\d/.test(pass);
+}
+
+// SHOW PASSWORD
+function togglePass(id){
+  let x=document.getElementById(id);
+  x.type = x.type==="password" ? "text" : "password";
+}
+
+// REGISTER
+function register(){
+  let name=document.getElementById("name").value.trim();
+  let email=document.getElementById("email").value.trim();
+  let pass=document.getElementById("password").value;
+
+  if(name.length<3){
+    alert("Name must be at least 3 characters");
     return;
   }
 
-  localStorage.setItem("name", name);
-  localStorage.setItem("email", email);
-  localStorage.setItem("password", pass);
+  if(!validEmail(email)){
+    alert("Enter valid email");
+    return;
+  }
 
-  alert("Registered Successfully 💖");
+  if(!validPassword(pass)){
+    alert("Password must be 8+ characters & include a number");
+    return;
+  }
+
+  localStorage.setItem("name",name);
+  localStorage.setItem("email",email);
+  localStorage.setItem("password",pass);
+
+  alert("Registered Successfully");
   showLogin();
 }
 
-function login() {
-  let email = document.getElementById("loginEmail").value;
-  let pass = document.getElementById("loginPassword").value;
+// LOGIN
+function login(){
+  let email=document.getElementById("loginEmail").value;
+  let pass=document.getElementById("loginPassword").value;
 
-  if (email === localStorage.getItem("email") &&
-      pass === localStorage.getItem("password")) {
+  if(email===localStorage.getItem("email") &&
+     pass===localStorage.getItem("password")){
 
-    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("loggedIn","true");
+    window.location.href="home.html";
 
-    alert("Welcome 🎉 " + localStorage.getItem("name"));
-
-    window.location.href = "home.html";
-  } else {
+  }else{
     alert("Invalid login");
   }
 }
 
-function showLogin() {
-  document.getElementById("registerBox").style.display = "none";
-  document.getElementById("loginBox").style.display = "block";
-  document.getElementById("title").innerText = "Welcome Back";
+// SWITCH
+function showLogin(){
+  registerBox.style.display="none";
+  loginBox.style.display="block";
+  title.innerText="Welcome Back";
 }
 
-function showRegister() {
-  document.getElementById("registerBox").style.display = "block";
-  document.getElementById("loginBox").style.display = "none";
-  document.getElementById("title").innerText = "Create Account";
+function showRegister(){
+  registerBox.style.display="block";
+  loginBox.style.display="none";
+  title.innerText="Create Account";
 }
 </script>
 
