@@ -1,348 +1,282 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rent it</title>
+<title>Rent it</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Georgia', serif;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia';}
+body{background:#f5efe6;color:#2c2c2c;}
 
-        body {
-            background: #f5efe6;
-            color: #2c2c2c;
-        }
+/* NAVBAR */
+.navbar{
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 60px;background:#fbf7f1;border-bottom:1px solid #e6dccc;
+}
+.logo{font-size:24px;color:#6b4f2a;font-weight:bold;}
+.search input{padding:10px;border-radius:25px;border:1px solid #d6c3a3;width:260px;}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 60px;
-            background: #fbf7f1;
-            border-bottom: 1px solid #e6dccc;
-        }
+/* HERO */
+.hero{
+height:65vh;
+background:
+linear-gradient(rgba(20,15,10,0.55), rgba(20,15,10,0.55)),
+url("hero.png") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+.hero h1{
+font-size:44px;
+letter-spacing:1px;
+font-weight:500;
+}
 
-        .logo {
-            font-size: 24px;
-            color: #6b4f2a;
-            font-weight: 600;
-        }
+.hero p{
+margin-top:10px;
+font-size:16px;
+color:#e8dcc6;
+}
+/* TABS */
+.tabs{
+display:flex;gap:40px;justify-content:center;padding:15px;background:#fff;
+}
+.tab{cursor:pointer;font-weight:bold;}
+.active{color:#6b4f2a;border-bottom:2px solid #6b4f2a;}
 
-        .search input {
-            padding: 10px;
-            border-radius: 25px;
-            border: 1px solid #d6c3a3;
-            width: 260px;
-            background: #fff;
-        }
+/* CATEGORY ROW */
+.category-row{
+display:flex;gap:30px;overflow-x:auto;padding:20px;background:#fff;
+}
+.cat{text-align:center;min-width:80px;cursor:pointer;}
+.cat img{
+width:60px;height:60px;border-radius:50%;object-fit:cover;
+}
+.cat p{font-size:12px;margin-top:5px;}
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            font-size: 14px;
-        }
+/* SECTION */
+.section{padding:40px;}
+.section h2{margin-bottom:20px;color:#3e2f1c;}
 
-        .nav-links div {
-            cursor: pointer;
-        }
+/* CARDS */
+.cards{display:flex;gap:20px;flex-wrap:wrap;}
+.card{
+width:250px;background:#fff;border-radius:12px;
+overflow:hidden;border:1px solid #e6dccc;
+transition:0.3s;
+}
+.card:hover{transform:translateY(-5px);}
+.card img{width:100%;height:180px;object-fit:cover;}
+.card-content{padding:10px;}
 
-        .hero {
-            height: 70vh;
-            background: 
-                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-                url('https://images.unsplash.com/photo-1519225421980-715cb0215aed') center/cover no-repeat;
+.btn{
+padding:6px 10px;border:1px solid #6b4f2a;background:none;cursor:pointer;
+}
+.btn:hover{background:#6b4f2a;color:white;}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .hero-content {
-            color: #f8f5f0;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-        }
-
-        .hero p {
-            margin-top: 10px;
-            color: #e6dccc;
-        }
-
-        .section {
-            margin: 60px;
-        }
-
-        .section h2 {
-            margin-bottom: 25px;
-            color: #3e2f1c;
-        }
-
-        .cards {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            width: 260px;
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e6dccc;
-            transition: 0.3s;
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        .card-content {
-            padding: 15px;
-        }
-
-        .price {
-            color: #6b4f2a;
-            font-weight: bold;
-        }
-
-        .btn {
-            margin-top: 10px;
-            padding: 8px 14px;
-            border-radius: 20px;
-            border: 1px solid #6b4f2a;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #6b4f2a;
-            color: white;
-        }
-
-        input[type="date"] {
-            margin-top: 10px;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            width: 100%;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 30px;
-            background: #2c2c2c;
-            color: #d6c3a3;
-        }
-    </style>
+</style>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <div class="logo">Rent it</div>
-
-    <div class="search">
-        <input placeholder="Search rentals, services, halls...">
-    </div>
-
-    <div class="nav-links" id="navLinks"></div>
+<div class="logo">Rent it</div>
+<div class="search"><input placeholder="Search..."></div>
+<div id="navLinks"></div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-    <div class="hero-content">
-        <h1>Luxury Rentals & Elegant Celebrations</h1>
-        <p>Curated experiences for your special moments</p>
-    </div>
+<div>
+<h1>Rentals & Elegant Celebrations</h1>
+<p>Curated experiences for your special moments</p>
+</div>
 </div>
 
-<!-- RENTALS -->
+<!-- TABS -->
+<div class="tabs">
+<div class="tab active" onclick="switchTab('women')">Women</div>
+<div class="tab" onclick="switchTab('men')">Men</div>
+</div>
+
+<!-- CATEGORY ROW -->
+<div class="category-row" id="categories"></div>
+
+<!-- ⭐ PRODUCTS RIGHT AFTER CATEGORIES -->
 <div class="section">
-    <h2>Featured Rentals</h2>
+<h2 id="title">Aesthetics</h2>
+<div class="cards" id="products"></div>
+</div>
 
-    <div class="cards">
+<!-- FEATURED -->
+<div class="section">
+<h2>Featured Rentals</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c">
+<div class="card-content">Designer Dress<br>₹200/day<br><input type="date"><br><button class="btn">Rent</button></div>
+</div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c">
-            <div class="card-content">
-                Designer Dress <br>
-                <div class="price">₹200/day</div>
-                <input type="date" id="date1">
-                <button class="btn" onclick="rentItem('Dress','date1')">Rent</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb">
-            <div class="card-content">
-                Wedding Outfit <br>
-                <div class="price">₹500/day</div>
-                <input type="date" id="date2">
-                <button class="btn" onclick="rentItem('Wedding Outfit','date2')">Rent</button>
-            </div>
-        </div>
-
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb">
+<div class="card-content">Wedding Outfit<br>₹500/day<br><input type="date"><br><button class="btn">Rent</button></div>
+</div>
+</div>
 </div>
 
 <!-- BEAUTY -->
 <div class="section">
-    <h2>Beauty Services</h2>
+<h2>Beauty Services</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
+<div class="card-content">Bridal Makeup<br>₹3000<br><input type="date"><br><button class="btn">Book</button></div>
+</div>
 
-    <div class="cards">
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-            <div class="card-content">
-                Bridal Makeup <br>
-                <div class="price">₹3000</div>
-                <input type="date" id="date3">
-                <button class="btn" onclick="bookService('Bridal Makeup','date3')">Book</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
-            <div class="card-content">
-                Party Makeup <br>
-                <div class="price">₹1500</div>
-                <input type="date" id="date4">
-                <button class="btn" onclick="bookService('Party Makeup','date4')">Book</button>
-            </div>
-        </div>
-
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
+<div class="card-content">Party Makeup<br>₹1500<br><input type="date"><br><button class="btn">Book</button></div>
+</div>
+</div>
 </div>
 
 <!-- HALLS -->
 <div class="section">
-    <h2>Event Halls</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622">
-            <div class="card-content">
-                Grand Wedding Hall <br>
-                <div class="price">₹50,000/day</div>
-                <input type="date" id="date5">
-                <button class="btn" onclick="bookHall('Wedding Hall','date5')">Book</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84">
-            <div class="card-content">
-                Birthday Party Hall <br>
-                <div class="price">₹10,000/day</div>
-                <input type="date" id="date6">
-                <button class="btn" onclick="bookHall('Birthday Hall','date6')">Book</button>
-            </div>
-        </div>
-
-    </div>
+<h2>Event Halls</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622">
+<div class="card-content">Wedding Hall<br>₹50,000/day<br><input type="date"><br><button class="btn">Book</button></div>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-    © 2026 RentalHub — Premium Rental Experience
+<div class="card">
+<img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84">
+<div class="card-content">Birthday Hall<br>₹10,000/day<br><input type="date"><br><button class="btn">Book</button></div>
+</div>
+</div>
 </div>
 
 <script>
 
-// 🔒 PROTECT PAGE
-if (localStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "login.html";
+// DATA
+const data={
+women:{
+"Aesthetics":["bangles","heels","skirts","tops","jeans"],
+"Traditionals":["lehanga","saree","kurta"],
+"Festive":["dupatta","sharara"],
+"Party":["bodycon dress"],
+"Necklaces":["necklace"]
+},
+men:{
+"Trousers":["jeans","formal pants","shorts","joggers"],
+"Jackets":["jacket"],
+"Blazers & Suits":["blazer","suit"],
+"Formals":["shirt"],
+"Traditionals":["kurta","sherwani","nehru jacket"],
+"Footwear":["shoes","slippers"]
+}
+};
+
+let current="women";
+
+/* ✅ CATEGORY IMAGES FIX */
+const catImages = {
+"Aesthetics":"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
+"Traditionals":"https://images.unsplash.com/photo-1610030469983-98e550d6193c",
+"Festive":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
+"Party":"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
+"Necklaces":"https://images.unsplash.com/photo-1588444650700-6a6d8c8f6f36",
+
+"Trousers":"https://images.unsplash.com/photo-1542272604-787c3835535d",
+"Jackets":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
+"Blazers & Suits":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+"Formals":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
+"Traditionals":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
+"Footwear":"https://images.unsplash.com/photo-1528701800489-20be3c3f7d9e"
+};
+
+/* ✅ PRODUCT IMAGES FIX */
+const productImages = {
+"bangles":"https://images.unsplash.com/photo-1617038220319-276d3cfab638",
+"heels":"https://images.unsplash.com/photo-1528701800489-20be3c3f7d9e",
+"skirts":"https://images.unsplash.com/photo-1583496661160-fb5886a13d29",
+"tops":"https://images.unsplash.com/photo-1520974735194-9d8c0b66df42",
+"jeans":"https://images.unsplash.com/photo-1542272604-787c3835535d",
+
+"lehanga":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
+"saree":"https://images.unsplash.com/photo-1610030469983-98e550d6193c",
+"kurta":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+
+"dupatta":"https://images.unsplash.com/photo-1583496661160-fb5886a13d29",
+"sharara":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
+
+"bodycon dress":"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
+"necklace":"https://images.unsplash.com/photo-1588444650700-6a6d8c8f6f36",
+
+"formal pants":"https://images.unsplash.com/photo-1542272604-787c3835535d",
+"shorts":"https://images.unsplash.com/photo-1506629905607-c52b1d0a96f6",
+"joggers":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
+
+"jacket":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
+"blazer":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+"suit":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+
+"shirt":"https://images.unsplash.com/photo-1520974735194-9d8c0b66df42",
+"sherwani":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
+"nehru jacket":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+
+"shoes":"https://images.unsplash.com/photo-1528701800489-20be3c3f7d9e",
+"slippers":"https://images.unsplash.com/photo-1506629905607-c52b1d0a96f6"
+};
+
+// LOAD CATEGORIES
+function loadCategories(){
+let html="";
+Object.keys(data[current]).forEach(c=>{
+html+=`
+<div class="cat" onclick="loadProducts('${c}')">
+<img src="${catImages[c]}">
+<p>${c}</p>
+</div>`;
+});
+document.getElementById("categories").innerHTML=html;
+loadProducts(Object.keys(data[current])[0]);
 }
 
-// 👤 NAVBAR
-let name = localStorage.getItem("name");
+// LOAD PRODUCTS
+function loadProducts(cat){
+document.getElementById("title").innerText=cat;
 
-document.getElementById("navLinks").innerHTML = `
-    <div>Hi, ${name}</div>
-    <div onclick="viewBookings()">My Bookings</div>
-    <div onclick="logout()">Logout</div>
-`;
-
-// LOGOUT
-function logout() {
-    localStorage.removeItem("loggedIn");
-    window.location.href = "login.html";
+let html="";
+data[current][cat].forEach(i=>{
+html+=`
+<div class="card">
+<img src="${productImages[i] || 'https://images.unsplash.com/photo-1445205170230-053b83016050'}">
+<div class="card-content">
+${i}<br>
+<button class="btn">Rent</button>
+</div>
+</div>`;
+});
+document.getElementById("products").innerHTML=html;
 }
 
-// VIEW BOOKINGS
-function viewBookings(){
-    window.location.href = "bookings.html";
+// SWITCH TAB
+function switchTab(type){
+current=type;
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+event.target.classList.add("active");
+loadCategories();
 }
 
-// GET DATA
-function getBookings(){
-    return JSON.parse(localStorage.getItem("bookings") || "[]");
-}
+// INIT
+loadCategories();
 
-// SAVE BOOKING
-function saveBooking(type, item, date){
-    let data = getBookings();
-    let user = localStorage.getItem("email");
-
-    if(!date){
-        alert("Please select a date");
-        return false;
-    }
-
-    let exists = data.find(x =>
-        x.type === type &&
-        x.item === item &&
-        x.date === date
-    );
-
-    if(exists){
-        alert("Already booked!");
-        return false;
-    }
-
-    data.push({ type, item, date, user });
-
-    localStorage.setItem("bookings", JSON.stringify(data));
-
-    return true;
-}
-
-// ACTIONS
-function rentItem(item, id){
-    let date = document.getElementById(id).value;
-    if(saveBooking("Rental", item, date)){
-        alert(item + " booked on " + date);
-    }
-}
-
-function bookService(item, id){
-    let date = document.getElementById(id).value;
-    if(saveBooking("Service", item, date)){
-        alert(item + " booked on " + date);
-    }
-}
-
-function bookHall(item, id){
-    let date = document.getElementById(id).value;
-    if(saveBooking("Hall", item, date)){
-        alert(item + " booked on " + date);
-    }
-}
+// USER
+let name=localStorage.getItem("name");
+document.getElementById("navLinks").innerHTML=`Hi ${name}`;
 
 </script>
 
