@@ -75,6 +75,37 @@ padding:6px 10px;border:1px solid #6b4f2a;background:none;cursor:pointer;
 }
 .btn:hover{background:#6b4f2a;color:white;}
 
+.cat.active{
+border:2px solid #6b4f2a;
+border-radius:10px;   /* 🔥 square look */
+padding:5px;
+background:#f9f4ec;
+}
+
+.cat p{
+font-size:12px;
+margin-top:5px;
+}
+
+.cat.active p{
+color:#6b4f2a;
+font-weight:bold;
+}
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+transition:transform 0.4s ease;
+}
+
+.card:hover img{
+transform:scale(1.08);
+}
+
+.card{
+overflow:hidden;
+}
+
 </style>
 </head>
 
@@ -164,24 +195,24 @@ padding:6px 10px;border:1px solid #6b4f2a;background:none;cursor:pointer;
 const data={
 women:{
 "Aesthetics":["bangles","heels","skirts","tops","jeans"],
-"Traditionals":["lehanga","saree","kurta"],
-"Festive":["dupatta","sharara"],
-"Party":["bodycon dress"],
-"Necklaces":["necklace"]
+"Traditionals":["kurtas","lehangas","sarees","dhoti sarees"],
+"Festive":["kurtas","pajamas","dupatta","shararas"],
+"Party":["bodycons"],
+"Necklaces":["necklaces"]
 },
 men:{
-"Trousers":["jeans","formal pants","shorts","joggers"],
-"Jackets":["jacket"],
-"Blazers & Suits":["blazer","suit"],
-"Formals":["shirt"],
-"Traditionals":["kurta","sherwani","nehru jacket"],
+"Trousers":["jeans","formals","shorts","joggers"],
+"Jackets":["jackets"],
+"Blazers & Suits":["blazers","suits"],
+"Formals":["shirts"],
+"Traditionals":["kurtas","sherwani","nehru jackets","pyjamas","dhotis"],
 "Footwear":["shoes","slippers"]
 }
 };
 
 let current="women";
 
-/* ✅ CATEGORY IMAGES FIX */
+// ✅ CATEGORY IMAGES (FIXED)
 const catImages = {
 "Aesthetics":"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
 "Traditionals":"https://images.unsplash.com/photo-1610030469983-98e550d6193c",
@@ -192,56 +223,57 @@ const catImages = {
 "Trousers":"https://images.unsplash.com/photo-1542272604-787c3835535d",
 "Jackets":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
 "Blazers & Suits":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
-"Formals":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
-"Traditionals":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
+"Formals":"https://images.unsplash.com/photo-1520974735194-9d8c0b66df42",
 "Footwear":"https://images.unsplash.com/photo-1528701800489-20be3c3f7d9e"
 };
 
-/* ✅ PRODUCT IMAGES FIX */
+// ✅ PRODUCT IMAGES (ALL COVERED)
 const productImages = {
-"bangles":"https://images.unsplash.com/photo-1617038220319-276d3cfab638",
-"heels":"https://images.unsplash.com/photo-1528701800489-20be3c3f7d9e",
-"skirts":"https://images.unsplash.com/photo-1583496661160-fb5886a13d29",
-"tops":"https://images.unsplash.com/photo-1520974735194-9d8c0b66df42",
-"jeans":"https://images.unsplash.com/photo-1542272604-787c3835535d",
+"bangles":"bangles.png",
+"heels":"https://cdn.pixabay.com/photo/2016/03/27/19/31/shoes-1285143_1280.jpg",
+"skirts":"https://cdn.pixabay.com/photo/2017/08/06/00/51/fashion-2580469_1280.jpg",
+"tops":"https://cdn.pixabay.com/photo/2016/03/27/19/40/fashion-1285149_1280.jpg",
+"jeans":"https://cdn.pixabay.com/photo/2016/11/19/18/06/denim-1845794_1280.jpg",
 
-"lehanga":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
-"saree":"https://images.unsplash.com/photo-1610030469983-98e550d6193c",
-"kurta":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+"kurtas":"https://cdn.pixabay.com/photo/2020/06/21/15/52/fashion-5326817_1280.jpg",
+"lehangas":"https://cdn.pixabay.com/photo/2017/08/06/00/51/fashion-2580469_1280.jpg",
+"sarees":"https://cdn.pixabay.com/photo/2017/08/06/00/51/fashion-2580469_1280.jpg",
 
-"dupatta":"https://images.unsplash.com/photo-1583496661160-fb5886a13d29",
-"sharara":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
+"dupatta":"https://cdn.pixabay.com/photo/2017/08/06/00/51/fashion-2580469_1280.jpg",
+"shararas":"https://cdn.pixabay.com/photo/2017/08/06/00/51/fashion-2580469_1280.jpg",
 
-"bodycon dress":"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f",
-"necklace":"https://images.unsplash.com/photo-1588444650700-6a6d8c8f6f36",
+"bodycons":"https://cdn.pixabay.com/photo/2017/08/06/00/51/fashion-2580469_1280.jpg",
+"necklaces":"https://cdn.pixabay.com/photo/2016/11/29/03/53/jewelry-1866574_1280.jpg",
 
-"formal pants":"https://images.unsplash.com/photo-1542272604-787c3835535d",
-"shorts":"https://images.unsplash.com/photo-1506629905607-c52b1d0a96f6",
-"joggers":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
+"formals":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
+"shorts":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
+"joggers":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
 
-"jacket":"https://images.unsplash.com/photo-1520975916090-3105956dac38",
-"blazer":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
-"suit":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+"jackets":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
+"blazers":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
+"suits":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
 
-"shirt":"https://images.unsplash.com/photo-1520974735194-9d8c0b66df42",
-"sherwani":"https://images.unsplash.com/photo-1603252109303-2751441dd157",
-"nehru jacket":"https://images.unsplash.com/photo-1593032465171-8b3c3c0b9d1f",
+"shirts":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
+"sherwani":"https://cdn.pixabay.com/photo/2017/08/06/00/51/fashion-2580469_1280.jpg",
+"nehru jackets":"https://cdn.pixabay.com/photo/2016/11/29/09/32/man-1867009_1280.jpg",
 
-"shoes":"https://images.unsplash.com/photo-1528701800489-20be3c3f7d9e",
-"slippers":"https://images.unsplash.com/photo-1506629905607-c52b1d0a96f6"
+"shoes":"https://cdn.pixabay.com/photo/2016/03/27/19/31/shoes-1285143_1280.jpg",
+"slippers":"https://cdn.pixabay.com/photo/2016/03/27/19/31/shoes-1285143_1280.jpg"
 };
 
 // LOAD CATEGORIES
 function loadCategories(){
 let html="";
-Object.keys(data[current]).forEach(c=>{
+Object.keys(data[current]).forEach((c,index)=>{
 html+=`
-<div class="cat" onclick="loadProducts('${c}')">
-<img src="${catImages[c]}">
+<div class="cat ${index===0 ? 'active' : ''}" onclick="selectCategory(this,'${c}')">
+<img src="${catImages[c] || 'https://images.unsplash.com/photo-1445205170230-053b83016050'}">
 <p>${c}</p>
 </div>`;
 });
 document.getElementById("categories").innerHTML=html;
+
+// default first
 loadProducts(Object.keys(data[current])[0]);
 }
 
@@ -277,6 +309,17 @@ loadCategories();
 // USER
 let name=localStorage.getItem("name");
 document.getElementById("navLinks").innerHTML=`Hi ${name}`;
+function selectCategory(element, cat){
+
+// remove old highlight
+document.querySelectorAll(".cat").forEach(c=>c.classList.remove("active"));
+
+// add highlight
+element.classList.add("active");
+
+// load products
+loadProducts(cat);
+}
 
 </script>
 
