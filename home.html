@@ -3,6 +3,7 @@
 <head>
 <title>VIVIENNE</title>
 <link rel="icon" href="logo.png">
+<link rel="preload" as="image" href="images/jeans.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia';}
 body{background:#f5efe6;color:#2c2c2c;}
@@ -162,6 +163,14 @@ transition:0.2s;
 
 .cat:hover{
 transform:scale(1.08);
+}
+img{
+opacity:0;
+transition:opacity 0.4s ease;
+}
+
+img.loaded{
+opacity:1;
 }
 </style>
 </head>
