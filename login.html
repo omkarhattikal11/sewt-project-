@@ -3,107 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Page</title>
+<title>Vivienne Login</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* 🌟 BODY */
 body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(to right, #ffd6e0, #ffc0cb);
+  font-family: 'Inter', sans-serif;
+  background-color: #e8dfd3;
+  color:#3a322b;
 }
 
+/* 🌟 CENTER */
 .main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
 }
 
+/* 🌟 CARD */
 .container {
-  display: flex;
-  width: 900px;
-  height: 550px;
-  background: rgba(255,255,255,0.3);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  overflow: hidden;
+  display:flex;
+  width:900px;
+  height:550px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(15px);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
+/* LEFT */
 .left {
-  width: 50%;
-  padding: 40px;
+  width:50%;
+  padding:40px;
 }
 
-.brand {
-  text-align: center;
-  font-size: 40px;
-  font-weight: 700;
-  color: purple;
-  margin-bottom: 10px;
-  letter-spacing: 4px;
-}
-
+/* LOGO */
 .logo-img {
-  display: block;
-  margin: 0 auto 10px auto;
-  width: 100px;
-  border-radius: 10px;
+  display:block;
+  margin:0 auto 10px;
+  width:90px;
+  border-radius:10px;
 }
 
+/* BRAND */
+.brand {
+  text-align:center;
+  font-size:36px;
+  font-family:'Playfair Display', serif;
+  color:#8b6f47;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+
+/* TITLE */
 h1 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #b03060;
-  text-align: center;
+  text-align:center;
+  font-size:20px;
+  color:#6d5c4a;
+  margin-bottom:20px;
 }
 
+/* INPUT */
 .field {
-  margin-bottom: 15px;
-  position: relative;
+  margin-bottom:15px;
+  position:relative;
 }
 
 input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  background:#f3ece4;
+  outline:none;
 }
 
+/* PASSWORD ICON */
 .toggle {
-  position: absolute;
-  right: 10px;
-  top: 12px;
-  cursor: pointer;
+  position:absolute;
+  right:10px;
+  top:12px;
+  cursor:pointer;
 }
 
+/* BUTTON */
 button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  color:white;
+  font-weight:600;
 }
 
+/* BUTTON COLORS */
 .register-btn {
-  background: #ff6f91;
+  background:#b08d57;
 }
 
 .login-btn {
-  background: #8e44ad;
+  background:#6d5c4a;
 }
 
+button:hover {
+  opacity:0.9;
+}
+
+/* LINK */
+p {
+  text-align:center;
+  margin-top:10px;
+}
+
+a {
+  color:#8b6f47;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* RIGHT IMAGE */
 .right {
-  width: 50%;
+  width:50%;
 }
 
 .right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 </style>
 </head>
@@ -113,6 +151,7 @@ button {
 <div class="main">
 <div class="container">
 
+<!-- LEFT -->
 <div class="left">
 
 <img class="logo-img" src="https://i.pinimg.com/736x/d9/b9/93/d9b993d8eecfeb1f669f1a30f66030cb.jpg">
@@ -125,7 +164,7 @@ button {
 <div id="registerBox">
   <div class="field"><input type="text" placeholder="Name" id="name"></div>
   <div class="field"><input type="email" placeholder="Email" id="email"></div>
-  
+
   <div class="field">
     <input type="password" id="password" placeholder="Password">
     <span class="toggle" onclick="togglePass('password')">👁</span>
@@ -152,6 +191,7 @@ button {
 
 </div>
 
+<!-- RIGHT IMAGE -->
 <div class="right">
 <img id="slider">
 </div>
@@ -160,14 +200,15 @@ button {
 </div>
 
 <script>
-// IMAGE SLIDER
+
+/* IMAGE SLIDER */
 let images = [
  "https://i.pinimg.com/736x/33/95/2d/33952d048f576dbf161cdcafb4c09a0d.jpg",
-  "https://i.pinimg.com/736x/34/95/87/3495876ebb5db6669f6e0b4b30541032.jpg",
-  "https://i.pinimg.com/1200x/4e/94/0b/4e940bba5637210c36728346a61549ff.jpg",
-  "https://i.pinimg.com/736x/f2/40/76/f240762c2bcd5306f8565366bff38809.jpg",
-  "https://i.pinimg.com/736x/ad/03/b7/ad03b7efff535c7e50668680cb60eb9a.jpg",
-  "https://i.pinimg.com/736x/36/4f/5b/364f5bb836076a2f3ddc6a835eb8afd7.jpg"
+ "https://i.pinimg.com/736x/34/95/87/3495876ebb5db6669f6e0b4b30541032.jpg",
+ "https://i.pinimg.com/1200x/4e/94/0b/4e940bba5637210c36728346a61549ff.jpg",
+ "https://i.pinimg.com/736x/f2/40/76/f240762c2bcd5306f8565366bff38809.jpg",
+ "https://i.pinimg.com/736x/ad/03/b7/ad03b7efff535c7e50668680cb60eb9a.jpg",
+ "https://i.pinimg.com/736x/36/4f/5b/364f5bb836076a2f3ddc6a835eb8afd7.jpg"
 ];
 
 let i=0;
@@ -179,7 +220,8 @@ setInterval(()=>{
   slider.src=images[i];
 },2000);
 
-// VALIDATION FUNCTIONS
+
+/* VALIDATION */
 function validEmail(email){
   return /^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email);
 }
@@ -188,14 +230,14 @@ function validPassword(pass){
   return pass.length>=8 && /\d/.test(pass);
 }
 
-// SHOW PASSWORD
+/* TOGGLE PASSWORD */
 function togglePass(id){
   let x=document.getElementById(id);
   x.type = x.type==="password" ? "text" : "password";
 }
 
-// REGISTER
-function register(){
+/* REGISTER */
+async function register(){
   let name=document.getElementById("name").value.trim();
   let email=document.getElementById("email").value.trim();
   let pass=document.getElementById("password").value;
@@ -215,31 +257,51 @@ function register(){
     return;
   }
 
-  localStorage.setItem("name",name);
-  localStorage.setItem("email",email);
-  localStorage.setItem("password",pass);
+  let res = await fetch("http://localhost:3000/register", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify({ name, email, password: pass })
+  });
 
-  alert("Registered Successfully");
-  showLogin();
-}
+  let data = await res.json();
 
-// LOGIN
-function login(){
-  let email=document.getElementById("loginEmail").value;
-  let pass=document.getElementById("loginPassword").value;
-
-  if(email===localStorage.getItem("email") &&
-     pass===localStorage.getItem("password")){
-
-    localStorage.setItem("loggedIn","true");
-    window.location.href="home.html";
-
+  if(data.success){
+    alert("Registered Successfully ✅");
+    showLogin();
   }else{
-    alert("Invalid login");
+    alert(data.message);
   }
 }
 
-// SWITCH
+/* LOGIN */
+async function login(){
+  let email=document.getElementById("loginEmail").value;
+  let pass=document.getElementById("loginPassword").value;
+
+  let res = await fetch("http://localhost:3000/login", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify({ email, password: pass })
+  });
+
+  let data = await res.json();
+
+  if(data.success){
+    localStorage.setItem("loggedIn","true");
+    localStorage.setItem("name", data.user.name);
+
+    alert("Login Success 🎉");
+    window.location.href="home.html";
+  }else{
+    alert("Invalid login ❌");
+  }
+}
+
+/* SWITCH */
 function showLogin(){
   registerBox.style.display="none";
   loginBox.style.display="block";
@@ -251,6 +313,7 @@ function showRegister(){
   loginBox.style.display="none";
   title.innerText="Create Account";
 }
+
 </script>
 
 </body>
