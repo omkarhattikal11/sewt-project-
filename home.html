@@ -8,6 +8,7 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia';}
 body{background:#f5efe6;color:#2c2c2c;}
 
+
 .navbar{
 display:flex;justify-content:space-between;align-items:center;
 padding:20px 60px;background:#fbf7f1;border-bottom:1px solid #e6dccc;
@@ -60,13 +61,27 @@ width:60px;height:60px;border-radius:50%;object-fit:cover;
 .section h2{margin-bottom:20px;color:#3e2f1c;}
 
 /* CARDS */
-.cards{display:flex;gap:20px;flex-wrap:wrap;}
+.cards{
+display:flex;
+justify-content:center;   /* center everything */
+gap:30px;
+flex-wrap:wrap;
+max-width:900px;          /* 🔥 controls width */
+margin:0 auto;            /* 🔥 centers container */
+padding:20px 0;
+}
 .card{
-width:250px;background:#fff;border-radius:12px;
-overflow:hidden;border:1px solid #e6dccc;
+width:260px;
+background:#fff;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.12);
 transition:0.3s;
 }
-.card:hover{transform:translateY(-5px);}
+.card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 12px 25px rgba(0,0,0,0.18);
+}
 .card img{width:100%;height:180px;object-fit:cover;}
 .card-content{padding:10px;}
 
@@ -164,6 +179,54 @@ transition:0.2s;
 transform:scale(1.08);
 }
 
+.scroll-container{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding:20px;
+scroll-behavior:smooth;
+}
+
+.scroll-container::-webkit-scrollbar{
+display:none;
+}
+
+.card{
+min-width:220px;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.top-menu{
+display:flex;
+gap:30px;
+padding:15px 20px;
+font-weight:bold;
+}
+
+.menu-btn{
+cursor:pointer;
+padding:8px 15px;
+border-radius:8px;
+}
+
+.menu-btn.active{
+background:#6b4f2a;
+color:white;
+}
 </style>
 </head>
 
@@ -184,67 +247,116 @@ transform:scale(1.08);
 </div>
 </div>
 
-<!-- TABS -->
-<div class="tabs">
-<div class="tab active" onclick="switchTab('women')">Women</div>
-<div class="tab" onclick="switchTab('men')">Men</div>
+<div class="top-menu">
+  <span onclick="showProducts()" class="menu-btn active">Products</span>
+  <span onclick="showServices()" class="menu-btn">Services</span>
+  <span onclick="showHalls()" class="menu-btn">Hall Bookings</span>
 </div>
 
-<!-- CATEGORY ROW -->
-<div class="category-row" id="categories"></div>
+<!-- 🔥 PRODUCT CONTROLS (ADD THIS WRAPPER) -->
+<div id="productControls">
 
-<!-- ⭐ PRODUCTS RIGHT AFTER CATEGORIES -->
-<div class="section">
-<h2 id="title">Aesthetics</h2>
-<div class="cards" id="products"></div>
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('women')">Women</div>
+    <div class="tab" onclick="switchTab('men')">Men</div>
+  </div>
+
+  <!-- CATEGORY ROW -->
+  <div class="category-row" id="categories"></div>
+
 </div>
-
+<div class="section" id="productSection">
+  <h2 id="title">Explore Rentals</h2>
+  <div class="cards" id="products"></div>
+</div>
 <!-- FEATURED -->
-<div class="section">
-<h2>Featured Rentals</h2>
-<div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c">
-<div class="card-content">Designer Dress<br>₹200/day<br><input type="date"><br><button class="btn">Rent</button></div>
-</div>
+<div id="featuredSection">
 
-<div class="card">
-<img src="weddout.jpg">
-<div class="card-content">Wedding Outfit<br>₹500/day<br><input type="date"><br><button class="btn">Rent</button></div>
-</div>
-</div>
+  <h2>Featured Rentals</h2>
+
+  <div class="cards">
+    
+    <div class="card">
+      <img src="dressss.jpg">
+      <div class="card-content">
+        Designer Dress<br>₹200/day
+        <input type="date"><br>
+        <button class="btn">Rent</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="weddout.jpg">
+      <div class="card-content">
+        Wedding Outfit<br>₹500/day
+        <input type="date"><br>
+        <button class="btn">Rent</button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <!-- BEAUTY -->
-<div class="section">
-<h2>Beauty Services</h2>
-<div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
-<div class="card-content">Bridal Makeup<br>₹3000<br><input type="date"><br><button class="btn">Book</button></div>
-</div>
+<!-- SERVICES SECTION -->
+<div id="servicesSection" style="display:none;">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f">
-<div class="card-content">Party Makeup<br>₹1500<br><input type="date"><br><button class="btn">Book</button></div>
-</div>
-</div>
+  <h2>Beauty Services</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="bridal.jpg">
+      <div class="card-content">
+        Bridal Makeup<br>₹3000
+        <input type="date"><br>
+        <button class="btn">Book</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="party-makeup.jpg">
+      <div class="card-content">
+        Party Makeup<br>₹1500
+        <input type="date"><br>
+        <button class="btn">Book</button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <!-- HALLS -->
-<div class="section">
-<h2>Event Halls</h2>
-<div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622">
-<div class="card-content">Wedding Hall<br>₹50,000/day<br><input type="date"><br><button class="btn">Book</button></div>
-</div>
+<!-- HALLS SECTION -->
+<div id="hallsSection" style="display:none;">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84">
-<div class="card-content">Birthday Hall<br>₹10,000/day<br><input type="date"><br><button class="btn">Book</button></div>
-</div>
-</div>
+  <h2>Event Halls</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <img src="weddinghall.jpg">
+      <div class="card-content">
+        Grand Wedding Hall<br>₹50,000/day
+        <input type="date"><br>
+        <button class="btn">Book</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="birthdayhall.jpg">
+      <div class="card-content">
+        Birthday Party Hall<br>₹10,000/day
+        <input type="date"><br>
+        <button class="btn">Book</button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <script>
@@ -326,7 +438,38 @@ const productImages = {
 "traditional costume":"tradcost.jpg",
 "fancy dress":"fancy.jpg",
 };
+const featuredData = {
+"Aesthetics":["bangles","heels"],
+"Traditionals":["kurtas","lehangas"],
+"Festive":["dupatta","shararas"],
+"Party":["bodycons"],
+"Necklaces":["necklaces"],
+"Costumes":["superhero costume","fancy dress"],
 
+"Trousers":["jeans","formals"],
+"Jackets":["jackets"],
+"Blazers & Suits":["blazers"],
+"Formals":["formals"],
+"Traditional":["sherwani","nehru jackets"],
+"Footwear":["shoes","slippers"]
+};
+function loadFeatured(cat){
+
+let html="";
+
+let items = featuredData[cat] || [];
+
+items.forEach(i=>{
+html+=`
+<div class="card fade-in">
+<img src="${productImages[i]}" loading="lazy">
+<h4>${i}</h4>
+<button>Rent</button>
+</div>`;
+});
+
+document.getElementById("featured").innerHTML = html;
+}
 // LOAD CATEGORIES
 function loadCategories(){
 let html="";
@@ -339,8 +482,6 @@ html+=`
 });
 document.getElementById("categories").innerHTML=html;
 
-// default first
-loadProducts(Object.keys(data[current])[0]);
 }
 
 // LOAD PRODUCTS
@@ -372,20 +513,25 @@ loadCategories();
 // INIT
 loadCategories();
 
+// small delay so categories render first
+setTimeout(()=>{
+  loadAllProducts();
+},100);
+showProducts(); 
 // USER
 let name=localStorage.getItem("name");
 document.getElementById("navLinks").innerHTML=`Hi ${name}`;
+
 function selectCategory(element, cat){
 
-// remove old highlight
 document.querySelectorAll(".cat").forEach(c=>c.classList.remove("active"));
-
-// add highlight
 element.classList.add("active");
 
-// load products
 loadProducts(cat);
+loadFeatured(cat);
+
 }
+
 function showSkeleton(){
 let html="";
 for(let i=0;i<6;i++){
@@ -394,6 +540,84 @@ html+=`<div class="card skeleton skeleton-card"></div>`;
 document.getElementById("products").innerHTML=html;
 }
 
+function loadAllProducts(){
+
+let html="";
+let allItems=[];
+
+// 👉 take BOTH women + men
+Object.values(data).forEach(section=>{
+  Object.values(section).forEach(arr=>{
+    allItems = allItems.concat(arr);
+  });
+});
+
+// remove duplicates (important)
+allItems = [...new Set(allItems)];
+
+// show first 8
+allItems.sort(()=>0.5 - Math.random()).slice(0,8).forEach(i=>{
+  html+=`
+  <div class="card fade-in">
+    <img src="${productImages[i]}" loading="lazy">
+    <h4>${i}</h4>
+    <button>Rent</button>
+  </div>`;
+});
+
+document.getElementById("products").innerHTML = html;
+
+// title
+document.getElementById("title").innerText = "Explore Rentals";
+
+// remove highlight
+document.querySelectorAll(".cat").forEach(c=>c.classList.remove("active"));
+loadFeatured("Aesthetics");
+}
+function showProducts(){
+
+document.getElementById("servicesSection").style.display="none";
+document.getElementById("hallsSection").style.display="none";
+document.getElementById("productSection").style.display="block";
+document.getElementById("featuredSection").style.display="block";
+
+// 🔥 SHOW AGAIN
+document.getElementById("productControls").style.display="block";
+
+setActiveMenu(0);
+}
+
+function showServices(){
+
+document.getElementById("servicesSection").style.display="block";
+document.getElementById("hallsSection").style.display="none";
+document.getElementById("productSection").style.display="none";
+document.getElementById("featuredSection").style.display="none";
+
+// 🔥 THIS IS THE MAIN FIX
+document.getElementById("productControls").style.display="none";
+
+setActiveMenu(1);
+}
+
+function showHalls(){
+
+document.getElementById("servicesSection").style.display="none";
+document.getElementById("hallsSection").style.display="block";
+document.getElementById("productSection").style.display="none";
+document.getElementById("featuredSection").style.display="none";
+
+// 🔥 THIS IS THE MAIN FIX
+document.getElementById("productControls").style.display="none";
+
+setActiveMenu(2);
+}
+
+function setActiveMenu(index){
+document.querySelectorAll(".menu-btn").forEach(b=>b.classList.remove("active"));
+document.querySelectorAll(".menu-btn")[index].classList.add("active");
+}
+showProducts();
 </script>
 
 </body>
