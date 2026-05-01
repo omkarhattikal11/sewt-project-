@@ -245,6 +245,29 @@ background:#4e381d;
 display:flex;
 align-items:center;
 gap:15px;
+
+  #suggestions{
+  position:absolute;
+  top:45px;
+  left:0;
+  width:100%;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.12);
+  max-height:220px;
+  overflow-y:auto;
+  z-index:1000;
+}
+
+.suggestion-item{
+  padding:10px;
+  cursor:pointer;
+  border-bottom:1px solid #eee;
+}
+
+.suggestion-item:hover{
+  background:#f8f3eb;
+}
 }
 </style>
 </head>
@@ -254,8 +277,15 @@ gap:15px;
 <!-- NAVBAR -->
 <div class="navbar">
 <div class="logo">VIVIENNE</div>
-<div class="search">
-  <input id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
+<div class="search" style="position:relative;">
+  <input
+    id="searchInput"
+    placeholder="Search..."
+    onkeyup="showSuggestions()"
+    onkeypress="handleSearch(event)"
+    autocomplete="off"
+  >
+  <div id="suggestions"></div>
 </div>
 <div class="user-section">
   <span id="navLinks"></span>
@@ -661,6 +691,55 @@ window.location.href = "login.html";
     }
   }
 }
+  const searchItems = [
+  "blazers,suits",
+  "bodycons",
+  "dhotis",
+  "fancydress",
+  "footwear",
+  "formals",
+  "jackets",
+  "jeans",
+  "jewellery",
+  "kurtas",
+  "lehenga",
+  "sarees",
+  "shararas",
+  "shirts",
+  "tops"
+];
+
+function showSuggestions(){
+  let input =
+    document.getElementById("searchInput").value.toLowerCase();
+
+  let suggestions =
+    document.getElementById("suggestions");
+
+  suggestions.innerHTML = "";
+
+  if(input === "") return;
+
+  let filtered = searchItems.filter(item =>
+    item.toLowerCase().includes(input)
+  );
+
+  filtered.forEach(item=>{
+    suggestions.innerHTML += `
+      <div class="suggestion-item"
+      onclick="selectSuggestion('${item}')">
+        ${item}
+      </div>
+    `;
+  });
+}
+
+function selectSuggestion(item){
+  document.getElementById("searchInput").value = item;
+  document.getElementById("suggestions").innerHTML = "";
+}
+
+  
 </script>
 
 </body>
