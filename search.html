@@ -124,7 +124,279 @@ const productDatabase = {
 
 /* GET PRODUCTS */
 const products = productDatabase[query] || [];
+ const shopData = {
 
+"blazers,suits":[
+{shop:"Classic Threads",location:"Indiranagar, Bangalore"},
+{shop:"Suit Society",location:"Bandra West, Mumbai"},
+{shop:"The Formal Edit",location:"CP, Delhi"},
+{shop:"Royal Tailors",location:"Jubilee Hills, Hyderabad"},
+{shop:"Elite Menswear",location:"Koregaon Park, Pune"},
+{shop:"Sharp Fit",location:"Anna Nagar, Chennai"},
+{shop:"Gentleman's Hub",location:"MG Road, Bangalore"},
+{shop:"Urban Formals",location:"Sector 18, Noida"},
+{shop:"Luxury Wardrobe",location:"Vesu, Surat"},
+{shop:"Executive Closet",location:"Park Street, Kolkata"},
+{shop:"Business Mode",location:"Banjara Hills, Hyderabad"},
+{shop:"Occasion Wear",location:"Vijay Nagar, Indore"},
+{shop:"Tux House",location:"C Scheme, Jaipur"},
+{shop:"Premium Suit Studio",location:"Hazratganj, Lucknow"},
+{shop:"The Blazer Club",location:"Vijayanagar, Mysore"}
+],
+
+"bodycons":[
+{shop:"Glam Closet",location:"Koramangala, Bangalore"},
+{shop:"Velvet Vogue",location:"Bandra West, Mumbai"},
+{shop:"Urban Chic Rentals",location:"Connaught Place, Delhi"},
+{shop:"The Dress Edit",location:"Koregaon Park, Pune"},
+{shop:"Runway Wardrobe",location:"Banjara Hills, Hyderabad"},
+{shop:"Style Sphere",location:"T Nagar, Chennai"},
+{shop:"Luxury Threads",location:"C Scheme, Jaipur"},
+{shop:"Midnight Glam",location:"Calangute, Goa"},
+{shop:"Elite Closet",location:"Satellite, Ahmedabad"},
+{shop:"Aura Fashion Hub",location:"Park Street, Kolkata"},
+{shop:"Pink Petals",location:"Vesu, Surat"},
+{shop:"Trend Theory",location:"Vijay Nagar, Indore"},
+{shop:"House of Glam",location:"Dharampeth, Nagpur"},
+{shop:"Fashion Aura",location:"Hazratganj, Lucknow"},
+{shop:"Rent My Runway",location:"Vijayanagar, Mysore"}
+],
+
+"dhotis":[
+{shop:"Temple Threads",location:"Malleshwaram, Bangalore"},
+{shop:"Traditional Roots",location:"Mylapore, Chennai"},
+{shop:"Ethnic House",location:"Jayanagar, Bangalore"},
+{shop:"Silk Studio",location:"T Nagar, Chennai"},
+{shop:"Heritage Closet",location:"Basavanagudi, Bangalore"},
+{shop:"Royal Drapes",location:"MG Road, Mysore"},
+{shop:"Classic Culture",location:"Banjara Hills, Hyderabad"},
+{shop:"Tradition Hub",location:"Anna Nagar, Chennai"},
+{shop:"Ceremony Wear",location:"Vijay Nagar, Indore"},
+{shop:"South Styles",location:"Kukatpally, Hyderabad"},
+{shop:"Premium Ethnics",location:"Koregaon Park, Pune"},
+{shop:"Wedding Vault",location:"Rajajinagar, Bangalore"},
+{shop:"Elegant Traditions",location:"Malleswaram, Bangalore"},
+{shop:"Silk & Style",location:"JP Nagar, Bangalore"},
+{shop:"Occasion House",location:"VV Puram, Bangalore"}
+],
+
+"fancydress":[
+{shop:"Costume Kingdom",location:"HSR Layout, Bangalore"},
+{shop:"Dress Carnival",location:"Andheri West, Mumbai"},
+{shop:"Fantasy Closet",location:"CP, Delhi"},
+{shop:"Theme Rentals",location:"T Nagar, Chennai"},
+{shop:"Event Styles",location:"Koregaon Park, Pune"},
+{shop:"Royal Costumes",location:"Banjara Hills, Hyderabad"},
+{shop:"Party Planet",location:"Jayanagar, Bangalore"},
+{shop:"Magic Wardrobe",location:"Sector 62, Noida"},
+{shop:"Festival Fit",location:"Vesu, Surat"},
+{shop:"Kids Costume Hub",location:"Park Street, Kolkata"},
+{shop:"Dress World",location:"Anna Nagar, Chennai"},
+{shop:"Celebration Closet",location:"Koramangala, Bangalore"},
+{shop:"Theme Studio",location:"Vijay Nagar, Indore"},
+{shop:"Dream Outfit",location:"MG Road, Mysore"},
+{shop:"Fun Fashion",location:"Hazratganj, Lucknow"}
+],
+
+"footwear":[
+{shop:"Step Style",location:"Commercial Street, Bangalore"},
+{shop:"Heel House",location:"Linking Road, Mumbai"},
+{shop:"Walk Luxe",location:"CP, Delhi"},
+{shop:"Urban Soles",location:"Anna Nagar, Chennai"},
+{shop:"Trend Feet",location:"Banjara Hills, Hyderabad"},
+{shop:"Premium Steps",location:"Koregaon Park, Pune"},
+{shop:"Footwear Studio",location:"Koramangala, Bangalore"},
+{shop:"Luxury Walk",location:"Park Street, Kolkata"},
+{shop:"Fashion Soles",location:"Satellite, Ahmedabad"},
+{shop:"The Shoe Room",location:"Vesu, Surat"},
+{shop:"Elegant Walk",location:"MG Road, Bangalore"},
+{shop:"Bridal Heels Hub",location:"Jubilee Hills, Hyderabad"},
+{shop:"Sole Society",location:"Rajouri Garden, Delhi"},
+{shop:"Designer Steps",location:"Vijayanagar, Mysore"},
+{shop:"Daily Comfort",location:"Indiranagar, Bangalore"}
+],
+
+"formals":[
+{shop:"Corporate Closet",location:"Indiranagar, Bangalore"},
+{shop:"Boardroom Styles",location:"Bandra, Mumbai"},
+{shop:"Executive Wear",location:"CP, Delhi"},
+{shop:"Sharp Office",location:"T Nagar, Chennai"},
+{shop:"Work Mode",location:"Banjara Hills, Hyderabad"},
+{shop:"Formal First",location:"Koregaon Park, Pune"},
+{shop:"Elite Workwear",location:"MG Road, Bangalore"},
+{shop:"Office Luxe",location:"Sector 18, Noida"},
+{shop:"Premium Shirts",location:"Park Street, Kolkata"},
+{shop:"Modern Formals",location:"Anna Nagar, Chennai"},
+{shop:"Business Hub",location:"Satellite, Ahmedabad"},
+{shop:"Executive Line",location:"Vesu, Surat"},
+{shop:"Classic Corporate",location:"Rajajinagar, Bangalore"},
+{shop:"Tailored Office",location:"Hazratganj, Lucknow"},
+{shop:"Work Wardrobe",location:"Vijayanagar, Mysore"}
+],
+
+"jackets":[
+{shop:"Winter House",location:"Koramangala, Bangalore"},
+{shop:"Layered Luxe",location:"Andheri, Mumbai"},
+{shop:"Street Outerwear",location:"CP, Delhi"},
+{shop:"Jacket Junction",location:"Anna Nagar, Chennai"},
+{shop:"Cozy Wear",location:"Banjara Hills, Hyderabad"},
+{shop:"Urban Layers",location:"Koregaon Park, Pune"},
+{shop:"Leather Studio",location:"Indiranagar, Bangalore"},
+{shop:"Cold Club",location:"Park Street, Kolkata"},
+{shop:"Travel Layers",location:"Satellite, Ahmedabad"},
+{shop:"Street Style",location:"Vesu, Surat"},
+{shop:"Premium Jackets",location:"Jayanagar, Bangalore"},
+{shop:"Outdoor Hub",location:"MG Road, Mysore"},
+{shop:"Casual Layers",location:"Rajouri Garden, Delhi"},
+{shop:"Modern Jackets",location:"Hazratganj, Lucknow"},
+{shop:"Designer Outerwear",location:"Vijay Nagar, Indore"}
+],
+
+"jeans":[
+{shop:"Denim District",location:"Commercial Street, Bangalore"},
+{shop:"Blue Vault",location:"Bandra West, Mumbai"},
+{shop:"Urban Denim",location:"CP, Delhi"},
+{shop:"Street Fit",location:"Anna Nagar, Chennai"},
+{shop:"Daily Denim",location:"Banjara Hills, Hyderabad"},
+{shop:"Premium Blue",location:"Koregaon Park, Pune"},
+{shop:"Casual Culture",location:"Koramangala, Bangalore"},
+{shop:"Modern Jeans",location:"Park Street, Kolkata"},
+{shop:"Denim Studio",location:"Satellite, Ahmedabad"},
+{shop:"Classic Blue",location:"Vesu, Surat"},
+{shop:"Trend Denim",location:"Indiranagar, Bangalore"},
+{shop:"Relaxed Fit",location:"Vijayanagar, Mysore"},
+{shop:"Urban Threads",location:"Rajouri Garden, Delhi"},
+{shop:"Signature Jeans",location:"Hazratganj, Lucknow"},
+{shop:"Denim Lab",location:"Vijay Nagar, Indore"}
+],
+
+"jewellery":[
+{shop:"Royal Jewels",location:"Jayanagar, Bangalore"},
+{shop:"Bridal Gold",location:"Zaveri Bazaar, Mumbai"},
+{shop:"Temple Jewels",location:"Karol Bagh, Delhi"},
+{shop:"Luxury Shine",location:"T Nagar, Chennai"},
+{shop:"Sparkle Studio",location:"Banjara Hills, Hyderabad"},
+{shop:"Ornament House",location:"Koregaon Park, Pune"},
+{shop:"Elegant Shine",location:"MG Road, Bangalore"},
+{shop:"Golden Aura",location:"Park Street, Kolkata"},
+{shop:"Classic Jewels",location:"Satellite, Ahmedabad"},
+{shop:"Premium Gold",location:"Vesu, Surat"},
+{shop:"Wedding Shine",location:"Rajajinagar, Bangalore"},
+{shop:"Statement Jewels",location:"Indiranagar, Bangalore"},
+{shop:"Designer Shine",location:"Hazratganj, Lucknow"},
+{shop:"Bridal Studio",location:"Vijayanagar, Mysore"},
+{shop:"Luxury Collection",location:"Vijay Nagar, Indore"}
+],
+
+"kurtas":[
+{shop:"Ethnic Lane",location:"Jayanagar, Bangalore"},
+{shop:"Kurta Culture",location:"Bandra, Mumbai"},
+{shop:"Festive Closet",location:"CP, Delhi"},
+{shop:"Tradition Studio",location:"Anna Nagar, Chennai"},
+{shop:"Royal Ethnics",location:"Banjara Hills, Hyderabad"},
+{shop:"Premium Kurtas",location:"Koregaon Park, Pune"},
+{shop:"Classic Kurta House",location:"MG Road, Bangalore"},
+{shop:"Wedding Ethnics",location:"Park Street, Kolkata"},
+{shop:"Celebration Wear",location:"Satellite, Ahmedabad"},
+{shop:"Designer Kurta",location:"Vesu, Surat"},
+{shop:"Festive Threads",location:"Rajajinagar, Bangalore"},
+{shop:"Traditional Edit",location:"Koramangala, Bangalore"},
+{shop:"Occasion Wear",location:"Hazratganj, Lucknow"},
+{shop:"Royal Collection",location:"Vijayanagar, Mysore"},
+{shop:"Luxury Ethnic",location:"Vijay Nagar, Indore"}
+],
+
+"lehenga":[
+{shop:"Bridal Dreams",location:"Jayanagar, Bangalore"},
+{shop:"Royal Drapes",location:"Bandra West, Mumbai"},
+{shop:"Wedding Wardrobe",location:"Karol Bagh, Delhi"},
+{shop:"Luxe Lehengas",location:"T Nagar, Chennai"},
+{shop:"The Bridal Edit",location:"Banjara Hills, Hyderabad"},
+{shop:"Designer Couture",location:"Koregaon Park, Pune"},
+{shop:"Grand Occasions",location:"MG Road, Bangalore"},
+{shop:"Premium Bridal",location:"Park Street, Kolkata"},
+{shop:"Ethnic Elegance",location:"Satellite, Ahmedabad"},
+{shop:"Wedding Studio",location:"Vesu, Surat"},
+{shop:"Traditional Luxe",location:"Rajajinagar, Bangalore"},
+{shop:"Luxury Rentals",location:"Koramangala, Bangalore"},
+{shop:"Royal Bride",location:"Hazratganj, Lucknow"},
+{shop:"Classic Wedding",location:"Vijayanagar, Mysore"},
+{shop:"Elite Couture",location:"Vijay Nagar, Indore"}
+],
+
+"sarees":[
+{shop:"Silk Stories",location:"Jayanagar, Bangalore"},
+{shop:"Kanjivaram House",location:"Mylapore, Chennai"},
+{shop:"Elegant Sarees",location:"Karol Bagh, Delhi"},
+{shop:"Wedding Silks",location:"Bandra, Mumbai"},
+{shop:"Royal Drapes",location:"Banjara Hills, Hyderabad"},
+{shop:"Premium Sarees",location:"Koregaon Park, Pune"},
+{shop:"Classic Collections",location:"MG Road, Bangalore"},
+{shop:"Traditional Drapes",location:"Park Street, Kolkata"},
+{shop:"Luxury Saree Hub",location:"Satellite, Ahmedabad"},
+{shop:"Silk Studio",location:"Vesu, Surat"},
+{shop:"Designer Sarees",location:"Rajajinagar, Bangalore"},
+{shop:"Festive Silks",location:"Koramangala, Bangalore"},
+{shop:"Bridal Sarees",location:"Hazratganj, Lucknow"},
+{shop:"Ethnic Threads",location:"Vijayanagar, Mysore"},
+{shop:"Premium Drapes",location:"Vijay Nagar, Indore"}
+],
+
+"shararas":[
+{shop:"Sharara Studio",location:"Koramangala, Bangalore"},
+{shop:"Festive Glam",location:"Bandra, Mumbai"},
+{shop:"Designer Ethnics",location:"CP, Delhi"},
+{shop:"Luxury Sharara",location:"T Nagar, Chennai"},
+{shop:"Wedding Closet",location:"Banjara Hills, Hyderabad"},
+{shop:"Traditional Luxe",location:"Koregaon Park, Pune"},
+{shop:"Premium Occasion",location:"MG Road, Bangalore"},
+{shop:"Ethnic Edit",location:"Park Street, Kolkata"},
+{shop:"Designer Rentals",location:"Satellite, Ahmedabad"},
+{shop:"Royal Wear",location:"Vesu, Surat"},
+{shop:"Celebration Closet",location:"Rajajinagar, Bangalore"},
+{shop:"Modern Tradition",location:"Indiranagar, Bangalore"},
+{shop:"Luxury Glam",location:"Hazratganj, Lucknow"},
+{shop:"Signature Sharara",location:"Vijayanagar, Mysore"},
+{shop:"Party Ethnics",location:"Vijay Nagar, Indore"}
+],
+
+"shirts":[
+{shop:"Shirt Studio",location:"Indiranagar, Bangalore"},
+{shop:"Corporate Shirts",location:"Bandra, Mumbai"},
+{shop:"Formal First",location:"CP, Delhi"},
+{shop:"Premium Shirts",location:"Anna Nagar, Chennai"},
+{shop:"Office Wear",location:"Banjara Hills, Hyderabad"},
+{shop:"Classic Collar",location:"Koregaon Park, Pune"},
+{shop:"Executive Closet",location:"MG Road, Bangalore"},
+{shop:"Business Basics",location:"Park Street, Kolkata"},
+{shop:"Tailored Fit",location:"Satellite, Ahmedabad"},
+{shop:"Modern Shirts",location:"Vesu, Surat"},
+{shop:"Luxury Cotton",location:"Rajajinagar, Bangalore"},
+{shop:"Minimal Office",location:"Koramangala, Bangalore"},
+{shop:"Daily Formals",location:"Hazratganj, Lucknow"},
+{shop:"Premium Essentials",location:"Vijayanagar, Mysore"},
+{shop:"Signature Shirts",location:"Vijay Nagar, Indore"}
+],
+
+"tops":[
+{shop:"Trendy Tops",location:"Koramangala, Bangalore"},
+{shop:"Fashion Hub",location:"Bandra West, Mumbai"},
+{shop:"Daily Chic",location:"CP, Delhi"},
+{shop:"Modern Wear",location:"Anna Nagar, Chennai"},
+{shop:"Style Studio",location:"Banjara Hills, Hyderabad"},
+{shop:"Urban Closet",location:"Koregaon Park, Pune"},
+{shop:"Premium Fashion",location:"MG Road, Bangalore"},
+{shop:"Minimal Looks",location:"Park Street, Kolkata"},
+{shop:"Designer Tops",location:"Satellite, Ahmedabad"},
+{shop:"Everyday Style",location:"Vesu, Surat"},
+{shop:"Street Chic",location:"Rajajinagar, Bangalore"},
+{shop:"Luxury Daily",location:"Indiranagar, Bangalore"},
+{shop:"Fashion Point",location:"Hazratganj, Lucknow"},
+{shop:"Trendy Threads",location:"Vijayanagar, Mysore"},
+{shop:"Modern Edit",location:"Vijay Nagar, Indore"}
+]
+
+};
 let html = "";
 
 for(let i=1; i<=products.length; i++){
@@ -133,8 +405,8 @@ for(let i=1; i<=products.length; i++){
     <img src="images/${query}/${i}.jpg">
     <div class="info">
       <h3>${products[i-1]}</h3>
-      <p>Shop Name: Vivienne Rentals ${i}</p>
-      <p>Location: Bangalore</p>
+      <p>Shop Name: ${shopData[query][i-1].shop}</p>
+<p>Location: ${shopData[query][i-1].location}</p>
     </div>
   </div>
   `;
