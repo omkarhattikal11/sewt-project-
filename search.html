@@ -61,7 +61,59 @@ h1{
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const query = params.get("q");
+let query = params.get("q").toLowerCase().trim();
+
+const aliases = {
+  "blazer":"blazers,suits",
+  "suit":"blazers,suits",
+  "blazers":"blazers,suits",
+  "suits":"blazers,suits",
+
+  "bodycon":"bodycons",
+  "bodycons":"bodycons",
+
+  "dhoti":"dhotis",
+  "dhotis":"dhotis",
+
+  "fancydress":"fancydress",
+  "fancy dress":"fancydress",
+
+  "shoe":"footwear",
+  "shoes":"footwear",
+  "footwear":"footwear",
+
+  "formal":"formals",
+  "formals":"formals",
+
+  "jacket":"jackets",
+  "jackets":"jackets",
+
+  "jean":"jeans",
+  "jeans":"jeans",
+
+  "jewellery":"jewellery",
+  "jewelry":"jewellery",
+
+  "kurta":"kurtas",
+  "kurtas":"kurtas",
+
+  "lehanga":"lehenga",
+  "lehenga":"lehenga",
+
+  "saree":"sarees",
+  "sarees":"sarees",
+
+  "sharara":"shararas",
+  "shararas":"shararas",
+
+  "shirt":"shirts",
+  "shirts":"shirts",
+
+  "top":"tops",
+  "tops":"tops"
+};
+
+query = aliases[query] || query;
 
 /* PRODUCT DATABASE */
 const productDatabase = {
