@@ -126,6 +126,12 @@ button{
   background:#6b4f2a;
   color:white;
 }
+  .size.selected{
+  background:#6b4f2a;
+  color:white;
+  transform:scale(1.05);
+  box-shadow:0 5px 12px rgba(0,0,0,0.15);
+}
 
 /* REVIEWS */
 .reviews{
@@ -308,9 +314,15 @@ function calculatePrice(){
     document.getElementById("price").style.color="green";
   }
 }
-  function checkSize(element){
-  let unavailableSizes = ["XS","XXXL"]; // random unavailable sizes
+ function checkSize(element){
 
+  document.querySelectorAll(".size").forEach(size=>{
+    size.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
+
+  let unavailableSizes = ["XS","XXXL"];
   let selectedSize = element.innerText;
 
   if(unavailableSizes.includes(selectedSize)){
