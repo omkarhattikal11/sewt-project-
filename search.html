@@ -339,8 +339,12 @@ for(let i=1;i<=15;i++){
 document.getElementById("results").innerHTML = html;
 
 function openProduct(name,id){
+  let productName = products[id-1];
+
   window.location.href =
-  "product.html?item=" + name + "&id=" + id;
+  "product.html?item=" + name +
+  "&id=" + id +
+  "&product=" + encodeURIComponent(productName);
 }
 </script>
 
