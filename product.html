@@ -2,233 +2,93 @@
 <html>
 <head>
 <title>Product Details</title>
-
 <style>
 body{
   font-family:Arial;
   background:#f5efe6;
   padding:30px;
-  margin:0;
 }
 
 .container{
-  max-width:1000px;
+  max-width:900px;
   margin:auto;
   background:white;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
-.top-section{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  padding:30px;
-}
-
-.product-img{
-  width:100%;
-  height:550px;
-  object-fit:contain;
-  background:#fafafa;
+  padding:20px;
   border-radius:15px;
 }
 
-.details{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-}
-
-h2{
-  margin:0;
-  font-size:32px;
-  color:#3e2f1c;
-}
-
-.price-tag{
-  font-size:28px;
-  color:#6b4f2a;
-  font-weight:bold;
-}
-
-.info-box{
-  background:#faf7f2;
-  padding:18px;
-  border-radius:12px;
-}
-
-input, select{
+img{
   width:100%;
-  padding:12px;
-  margin-top:8px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  font-size:15px;
+  max-height:600px;
+  object-fit:contain;
+  border-radius:12px;
+  background:#f8f8f8;
 }
 
 button{
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:15px;
-  font-weight:bold;
-  transition:0.3s;
-}
-
-.primary-btn{
+  padding:12px 20px;
   background:#6b4f2a;
   color:white;
-}
-
-.primary-btn:hover{
-  background:#4d3617;
-}
-
-.size-options{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.size{
-  padding:10px 16px;
-  border:1px solid #6b4f2a;
+  border:none;
   border-radius:8px;
   cursor:pointer;
 }
 
-.size:hover{
-  background:#6b4f2a;
-  color:white;
-}
-
-.section{
-  padding:30px;
-  border-top:1px solid #eee;
-}
-
-.review{
-  background:#fafafa;
-  padding:15px;
-  border-radius:10px;
-  margin-bottom:12px;
-}
-
-.hidden{
-  display:none;
-}
-
-.payment-options{
-  display:flex;
-  gap:15px;
-}
-
-.pay-box{
-  flex:1;
-  padding:18px;
-  border:2px solid #ddd;
-  border-radius:12px;
-  cursor:pointer;
-  text-align:center;
-}
-
-.pay-box:hover{
-  border-color:#6b4f2a;
-  background:#faf7f2;
+select,input{
+  padding:10px;
+  margin:8px 0;
+  width:100%;
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
+  <img id="productImg">
 
-  <div class="top-section">
+  <h2 id="name"></h2>
 
-    <img id="productImg" class="product-img">
+  <p><b>Shop:</b> Vivienne Rentals</p>
+  <p><b>Location:</b> Mysore</p>
+  <p><b>Price per hour:</b> ₹100</p>
 
-    <div class="details">
-      <h2 id="name"></h2>
+  <h3>Rental Duration</h3>
+  From:
+  <input type="date" id="fromDate">
 
-      <div class="price-tag">₹100/hour</div>
+  To:
+  <input type="date" id="toDate">
 
-      <div class="info-box">
-        <p><b>🏪 Shop:</b> <span id="shopName"></span></p>
-        <p><b>📍 Location:</b> <span id="location"></span></p>
-      </div>
+  <button onclick="calculatePrice()">Calculate Price</button>
 
-      <div class="info-box">
-        <h3>Rental Duration</h3>
+  <p id="price"></p>
 
-        From:
-        <input type="date" id="fromDate">
+  <h3>Select Size</h3>
+  <select>
+    <option>XS</option>
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+    <option>XXL</option>
+    <option>XXXL</option>
+  </select>
 
-        To:
-        <input type="date" id="toDate">
+  <h3>Reviews & Ratings</h3>
+  <p>⭐⭐⭐⭐⭐ Amazing dress quality</p>
+  <p>⭐⭐⭐⭐ Very affordable</p>
 
-        <br><br>
-        <button class="primary-btn" onclick="calculatePrice()">
-          Calculate Price
-        </button>
+  <img src="https://picsum.photos/200/150?1">
+  <img src="https://picsum.photos/200/150?2">
 
-        <p id="price"></p>
-      </div>
+  <h3>Payment</h3>
+  <select>
+    <option>Cash on Delivery</option>
+    <option>UPI</option>
+  </select>
 
-      <div class="info-box">
-        <h3>Select Size</h3>
-
-        <div class="size-options">
-          <div class="size">XS</div>
-          <div class="size">S</div>
-          <div class="size">M</div>
-          <div class="size">L</div>
-          <div class="size">XL</div>
-          <div class="size">XXL</div>
-          <div class="size">XXXL</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h3>Reviews & Ratings ⭐ 4.8</h3>
-
-    <div class="review">⭐⭐⭐⭐⭐ Beautiful quality and perfect fit.</div>
-    <div class="review">⭐⭐⭐⭐ Very affordable and clean product.</div>
-    <div class="review">⭐⭐⭐⭐⭐ Delivery was on time.</div>
-    <div class="review">⭐⭐⭐⭐ Great stitching and finishing.</div>
-
-    <div id="moreReviews" class="hidden">
-      <div class="review">⭐⭐⭐⭐⭐ Worth the rental price.</div>
-      <div class="review">⭐⭐⭐⭐ Material feels premium.</div>
-      <div class="review">⭐⭐⭐⭐⭐ Highly recommended.</div>
-      <div class="review">⭐⭐⭐⭐ Nice packaging.</div>
-      <div class="review">⭐⭐⭐⭐⭐ Loved the overall look.</div>
-      <div class="review">⭐⭐⭐⭐ Good customer support.</div>
-    </div>
-
-    <button class="primary-btn" onclick="showMoreReviews()">
-      See More Reviews
-    </button>
-  </div>
-
-  <div class="section">
-    <h3>Payment Options</h3>
-
-    <div class="payment-options">
-      <div class="pay-box">💵 Cash on Delivery</div>
-      <div class="pay-box">📱 UPI Payment</div>
-    </div>
-
-    <br>
-    <button class="primary-btn" onclick="placeOrder()">
-      Place Order
-    </button>
-  </div>
-
+  <br><br>
+  <button onclick="placeOrder()">Place Order</button>
 </div>
 
 <script>
@@ -237,26 +97,11 @@ const params = new URLSearchParams(window.location.search);
 const item = params.get("item");
 const id = params.get("id");
 
-document.getElementById("name").innerText = item + " " + id;
+document.getElementById("name").innerText =
+item + " " + id;
+
 document.getElementById("productImg").src =
 "images/" + item + "/" + id + ".jpg";
-
-/* DIFFERENT SHOPS */
-const shops = [
-  {name:"Royal Rentals", location:"Bangalore"},
-  {name:"Elite Fashion Hub", location:"Mysore"},
-  {name:"The Wardrobe House", location:"Hubli"},
-  {name:"Style Vault", location:"Mangalore"},
-  {name:"Luxury Closet", location:"Belgaum"}
-];
-
-let selectedShop = shops[id % shops.length];
-
-document.getElementById("shopName").innerText =
-selectedShop.name;
-
-document.getElementById("location").innerText =
-selectedShop.location;
 
 function calculatePrice(){
   let from = new Date(document.getElementById("fromDate").value);
@@ -273,10 +118,6 @@ function calculatePrice(){
 
 function placeOrder(){
   alert("Order placed successfully ✅");
-}
-
-function showMoreReviews(){
-  document.getElementById("moreReviews").style.display="block";
 }
 </script>
 
