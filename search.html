@@ -117,61 +117,127 @@ query = aliases[query] || query;
 
 /* PRODUCT DATABASE */
 const productDatabase = {
-  "blazers,suits": [
-    "Classic Blue Blazer","Premium Tuxedo Set","Formal Elite Blazer",
-    "Wedding Luxe Suit","Slim Fit Office Blazer","Royal Navy Suit",
-    "Business Formal Wear","Signature Evening Suit","Executive Blazer",
-    "Classy Subtle Suit","Tailored Premium Blazer","Luxury Party Suit",
-    "Modern Groom Suit","Classic Gentleman Suit","Occasion Blazer Set"
-  ],
 
-  "bodycons":[
-    "Midnight Glam Dress","Elegant Curve Dress","Wine Red Statement",
-    "Velvet Evening Wear","Date Night Dress","Signature Glam Outfit ",
-    "Celebrity Inspired Look","Minimal Chic Bodycon","Princess bow fit",
-    "Bold Party Fit","Luxury Satin Dress","Classic Black Fit ",
-    "Cocktail Night Dress"
-  ],
+"blazers,suits":[
+"Classic Blue Blazer","Premium Tuxedo Set","Formal Elite Blazer",
+"Wedding Luxe Suit","Slim Fit Office Blazer","Royal Navy Suit",
+"Business Formal Wear","Signature Evening Suit","Executive Blazer",
+"Classy Subtle Suit","Tailored Premium Blazer","Luxury Party Suit",
+"Modern Groom Suit","Classic Gentleman Suit","Occasion Blazer Set"
+],
 
-  "lehenga":[
-    "Royal Bridal Lehenga","Designer Wedding Collection","Luxury Festive Lehenga",
-    "Celebrity Inspired Lehenga","Traditional Premium Wear","Grand Occasion Collection",
-    "Wedding Luxe Edition","Elegant Celebration Outfit","Premium Bridal Set",
-    "Classic Festive Lehenga","Luxury Party Collection","Modern Traditional Look",
-    "Designer Exclusive Wear","Signature Wedding Edition","Royal Premium Outfit"
-  ],
+"bodycons":[
+"Midnight Glam Dress","Elegant Curve Dress","Wine Red Statement",
+"Velvet Evening Wear","Date Night Dress","Signature Glam Outfit",
+"Celebrity Inspired Look","Minimal Chic Bodycon","Princess Bow Fit",
+"Bold Party Fit","Luxury Satin Dress","Classic Black Fit",
+"Cocktail Night Dress","Party Luxe Bodycon","Premium Club Wear"
+],
 
-  "kurtas":[
-    "Festive Kurta Set","Classic Cotton Kurta","Wedding Special Kurta",
-    "Premium Ethnic Wear","Traditional Luxe Set","Designer Kurta Collection",
-    "Celebration Special","Elegant Ethnic Wear","Modern Traditional Fit",
-    "Premium Ceremony Kurta","Classic Festive Outfit","Royal Kurta Set",
-    "Luxury Occasion Wear","Designer Traditional Set","Ethnic Signature"
-  ],
+"dhotis":[
+"Traditional Silk Dhoti","Classic White Dhoti","Wedding Premium Dhoti",
+"Temple Wear Collection","Festive Cotton Dhoti","South Indian Traditional",
+"Gold Border Dhoti","Luxury Ceremony Wear","Elegant Festive Dhoti",
+"Classic Occasion Dhoti","Royal Traditional Wear","Premium Cotton Set",
+"Heritage Collection","Designer Dhoti Set","Celebration Special"
+],
 
-  "sarees":[
-    "Kanjivaram Silk Saree","Wedding Premium Saree","Designer Party Saree",
-    "Classic Silk Collection","Luxury Festive Saree","Elegant Drapes Collection",
-    "Premium Bridal Saree","Signature Occasion Wear","Celebrity Inspired Saree",
-    "Traditional Luxe Set","Royal Celebration Saree","Minimal Premium Saree",
-    "Classic Wedding Collection","Luxury Draped Elegance","Festive Statement Saree"
-  ],
+"fancydress":[
+"Princess Costume","Royal Queen Outfit","Fantasy Party Dress",
+"Cartoon Theme Costume","Festival Costume Wear","Celebrity Costume",
+"Kids Special Outfit","Drama Performance Wear","Classic Costume Set",
+"Party Theme Outfit","Event Costume Wear","Premium Fancy Dress",
+"Designer Costume Set","School Event Outfit","Performance Special"
+],
 
-  "shirts":[
-    "Classic White Shirt","Premium Formal Shirt","Minimal Office Shirt",
-    "Luxury Casual Shirt","Executive Collection","Modern Fit Shirt",
-    "Designer Shirt Set","Signature Casual Collection","Tailored Formal Wear",
-    "Essential Shirt Collection","Premium Cotton Shirt","Business Casual Wear",
-    "Classic Everyday Shirt","Luxury Style Collection","Modern Essentials"
-  ],
+"footwear":[
+"Classic Heels","Elegant Sandals","Premium Sneakers",
+"Party Footwear","Wedding Heels","Luxury Flats",
+"Minimal Everyday Shoes","Designer Footwear","Fashion Walk Collection",
+"Premium Comfort Wear","Bridal Sandals","Signature Shoe Set",
+"Event Footwear","Modern Style Shoes","Luxury Collection"
+],
 
-  "tops":[
-    "Minimal Casual Top","Premium Crop Collection","Luxury Everyday Wear",
-    "Elegant Fashion Top","Designer Chic Wear","Statement Style Top",
-    "Classic Casual Collection","Modern Street Fashion","Premium Summer Wear",
-    "Minimal Daily Outfit","Luxury Trend Collection","Celebrity Inspired Top",
-    "Designer Everyday Wear","Fashion Essentials","Premium Style Top"
-  ]
+"formals":[
+"Corporate Classic Shirt","Executive Formal Wear","Office Essential Set",
+"Minimal White Formal","Business Elite Collection","Premium Office Fit",
+"Signature Work Wear","Boardroom Classic","Professional Formal Shirt",
+"Luxury Corporate Wear","Tailored Formal Collection","Classic Office Essentials",
+"Elegant Work Fit","Executive Premium Set","Formal Style Collection"
+],
+
+"jackets":[
+"Winter Premium Jacket","Classic Denim Jacket","Leather Luxe Collection",
+"Street Style Jacket","Minimal Casual Wear","Premium Bomber Jacket",
+"Urban Fashion Fit","Cold Season Essential","Luxury Outdoor Wear",
+"Designer Jacket Set","Travel Collection","Modern Layered Wear",
+"Fashion Statement Jacket","Signature Winter Wear","Premium Street Style"
+],
+
+"jeans":[
+"Classic Blue Denim","Slim Fit Jeans","Casual Everyday Denim",
+"Urban Street Fit","Minimal Washed Denim","Premium Straight Fit",
+"Relaxed Casual Wear","Luxury Denim Collection","Signature Jeans",
+"Modern Fit Denim","Essential Casual Jeans","Designer Blue Collection",
+"Premium Fashion Denim","Street Style Essential","Everyday Comfort Wear"
+],
+
+"jewellery":[
+"Royal Necklace Set","Bridal Jewellery Combo","Traditional Gold Collection",
+"Elegant Earrings Set","Temple Jewellery","Premium Wedding Set",
+"Luxury Party Accessories","Classic Bridal Wear","Minimal Jewellery Set",
+"Designer Necklace Combo","Festive Premium Collection","Traditional Ornament Set",
+"Statement Jewellery","Luxury Occasion Set","Elegant Gold Collection"
+],
+
+"kurtas":[
+"Festive Kurta Set","Classic Cotton Kurta","Wedding Special Kurta",
+"Premium Ethnic Wear","Traditional Luxe Set","Designer Kurta Collection",
+"Celebration Special","Elegant Ethnic Wear","Modern Traditional Fit",
+"Premium Ceremony Kurta","Classic Festive Outfit","Royal Kurta Set",
+"Luxury Occasion Wear","Designer Traditional Set","Ethnic Signature"
+],
+
+"lehenga":[
+"Royal Bridal Lehenga","Designer Wedding Collection","Luxury Festive Lehenga",
+"Celebrity Inspired Lehenga","Traditional Premium Wear","Grand Occasion Collection",
+"Wedding Luxe Edition","Elegant Celebration Outfit","Premium Bridal Set",
+"Classic Festive Lehenga","Luxury Party Collection","Modern Traditional Look",
+"Designer Exclusive Wear","Signature Wedding Edition","Royal Premium Outfit"
+],
+
+"sarees":[
+"Kanjivaram Silk Saree","Wedding Premium Saree","Designer Party Saree",
+"Classic Silk Collection","Luxury Festive Saree","Elegant Drapes Collection",
+"Premium Bridal Saree","Signature Occasion Wear","Celebrity Inspired Saree",
+"Traditional Luxe Set","Royal Celebration Saree","Minimal Premium Saree",
+"Classic Wedding Collection","Luxury Draped Elegance","Festive Statement Saree"
+],
+
+"shararas":[
+"Premium Sharara Set","Wedding Special Outfit","Luxury Festive Collection",
+"Designer Party Sharara","Elegant Traditional Wear","Classic Celebration Set",
+"Premium Occasion Outfit","Royal Sharara Collection","Luxury Wedding Set",
+"Minimal Festive Wear","Signature Designer Set","Traditional Glam Outfit",
+"Celebrity Style Sharara","Party Luxe Collection","Elegant Occasion Wear"
+],
+
+"shirts":[
+"Classic White Shirt","Premium Formal Shirt","Minimal Office Shirt",
+"Luxury Casual Shirt","Executive Collection","Modern Fit Shirt",
+"Everyday Premium Wear","Designer Shirt Set","Signature Casual Collection",
+"Tailored Formal Wear","Essential Shirt Collection","Premium Cotton Shirt",
+"Business Casual Wear","Classic Everyday Shirt","Luxury Style Collection"
+],
+
+"tops":[
+"Minimal Casual Top","Premium Crop Collection","Luxury Everyday Wear",
+"Elegant Fashion Top","Designer Chic Wear","Statement Style Top",
+"Classic Casual Collection","Modern Street Fashion","Premium Summer Wear",
+"Minimal Daily Outfit","Luxury Trend Collection","Celebrity Inspired Top",
+"Designer Everyday Wear","Fashion Essentials","Premium Style Top"
+]
+
 };
 
 /* GET PRODUCTS */
