@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search Results</title>
+<style>
+body{
+  font-family:Arial;
+  background:#f5efe6;
+  padding:20px;
+}
 
+h1{
+  margin-bottom:20px;
+}
+
+.results{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  cursor:pointer;
+}
+
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.info{
+  padding:15px;
+}
+</style>
+</head>
+<body>
+
+<h1 id="title"></h1>
+<div class="results" id="results"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const query = params.get("q");
+
+document.getElementById("title").innerText =
+"Showing results for: " + query;
+
+let html="";
+
+for(let i=1;i<=15;i++){
+  html += `
+  <div class="card" onclick="openProduct('${query}',${i})">
+    <img src="https://picsum.photos/400/300?random=${i}">
+    <div class="info">
+      <h3>${query} ${i}</h3>
+      <p>Shop Name: Vivienne Rentals ${i}</p>
+      <p>Location: Bangalore</p>
+    </div>
+  </div>`;
+}
+
+document.getElementById("results").innerHTML = html;
+
+function openProduct(name,id){
+  window.location.href =
+  "product.html?item=" + name + "&id=" + id;
+}
+</script>
+
+</body>
+</html>
