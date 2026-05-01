@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Details</title>
+<style>
+body{
+  font-family:Arial;
+  background:#f5efe6;
+  padding:30px;
+}
 
+.container{
+  max-width:900px;
+  margin:auto;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+}
+
+img{
+  width:100%;
+  max-height:450px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+button{
+  padding:12px 20px;
+  background:#6b4f2a;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+select,input{
+  padding:10px;
+  margin:8px 0;
+  width:100%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img id="productImg">
+
+  <h2 id="name"></h2>
+
+  <p><b>Shop:</b> Vivienne Rentals</p>
+  <p><b>Location:</b> Mysore</p>
+  <p><b>Price per hour:</b> ₹100</p>
+
+  <h3>Rental Duration</h3>
+  From:
+  <input type="date" id="fromDate">
+
+  To:
+  <input type="date" id="toDate">
+
+  <button onclick="calculatePrice()">Calculate Price</button>
+
+  <p id="price"></p>
+
+  <h3>Select Size</h3>
+  <select>
+    <option>XS</option>
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+    <option>XXL</option>
+    <option>XXXL</option>
+  </select>
+
+  <h3>Reviews & Ratings</h3>
+  <p>⭐⭐⭐⭐⭐ Amazing dress quality</p>
+  <p>⭐⭐⭐⭐ Very affordable</p>
+
+  <img src="https://picsum.photos/200/150?1">
+  <img src="https://picsum.photos/200/150?2">
+
+  <h3>Payment</h3>
+  <select>
+    <option>Cash on Delivery</option>
+    <option>UPI</option>
+  </select>
+
+  <br><br>
+  <button onclick="placeOrder()">Place Order</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const item = params.get("item");
+const id = params.get("id");
+
+document.getElementById("name").innerText =
+item + " " + id;
+
+document.getElementById("productImg").src =
+"https://picsum.photos/600/400?random=" + id;
+
+function calculatePrice(){
+  let from = new Date(document.getElementById("fromDate").value);
+  let to = new Date(document.getElementById("toDate").value);
+
+  let diff = (to - from)/(1000*60*60*24);
+
+  if(diff>0){
+    let total = diff * 24 * 100;
+    document.getElementById("price").innerText =
+    "Total Price: ₹" + total;
+  }
+}
+
+function placeOrder(){
+  alert("Order placed successfully ✅");
+}
+</script>
+
+</body>
+</html>
