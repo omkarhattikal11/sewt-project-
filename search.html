@@ -37,16 +37,32 @@ h1{
 .info{
   padding:15px;
 }
+
+  .premium-heading{
+  text-align:center;
+  font-size:32px;
+  font-weight:bold;
+  color:white;
+  margin-bottom:30px;
+  padding:18px;
+  border-radius:50px;
+  background:linear-gradient(45deg,#6b4f2a,#b08d57);
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  letter-spacing:1px;
+}
 </style>
 </head>
 <body>
 
-<h1 id="title"></h1>
+<div class="premium-heading">
+   ✨ Premium Rental Collection
+</div>
 <div class="results" id="results"></div>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 const query = params.get("q");
+  const products = productDatabase[query] || [];
   const productDatabase = {
   "blazers,suits": [
     "Classic Blue Blazer",
@@ -318,9 +334,7 @@ const query = params.get("q");
     "Premium Style Top"
   ]
 };
-
-document.getElementById("title").innerText =
-"Showing results for: " + query;
+  const products = productDatabase[query] || [];
 
 let html="";
 
