@@ -254,7 +254,9 @@ gap:15px;
 <!-- NAVBAR -->
 <div class="navbar">
 <div class="logo">VIVIENNE</div>
-<div class="search"><input placeholder="Search..."></div>
+<div class="search">
+  <input id="searchInput" placeholder="Search..." onkeypress="handleSearch(event)">
+</div>
 <div class="user-section">
   <span id="navLinks"></span>
   <button onclick="logout()" class="logout-btn">Logout</button>
@@ -649,6 +651,15 @@ localStorage.removeItem("name");
 // redirect to login page
 window.location.href = "login.html";
 
+}
+  function handleSearch(event){
+  if(event.key === "Enter"){
+    let query = document.getElementById("searchInput").value.trim();
+
+    if(query){
+      window.location.href = "search.html?q=" + encodeURIComponent(query);
+    }
+  }
 }
 </script>
 
