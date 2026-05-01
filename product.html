@@ -227,6 +227,7 @@ button{
           <div class="size">XXL</div>
           <div class="size">XXXL</div>
         </div>
+        <p id="sizeStatus" style="margin-top:12px;font-weight:bold;"></p>
       </div>
 
     </div>
@@ -289,10 +290,37 @@ function calculatePrice(){
 
   let diff = (to-from)/(1000*60*60*24);
 
+  let blockedDates = [5,12,18]; // some unavailable dates
+
+  if(blockedDates.includes(from.getDate())){
+    document.getElementById("price").innerHTML =
+    "❌ Sorry, outfit unavailable during selected dates";
+    document.getElementById("price").style.color="red";
+    return;
+  }
+
   if(diff>0){
     let total = diff * 24 * 100;
-    document.getElementById("price").innerText =
-    "Total Price: ₹" + total;
+
+    document.getElementById("price").innerHTML =
+    "✅ Available for rent<br><br>Total Price: ₹" + total;
+
+    document.getElementById("price").style.color="green";
+  }
+}
+  function checkSize(element){
+  let unavailableSizes = ["XS","XXXL"]; // random unavailable sizes
+
+  let selectedSize = element.innerText;
+
+  if(unavailableSizes.includes(selectedSize)){
+    document.getElementById("sizeStatus").innerHTML =
+    "❌ Sorry, this size is currently unavailable";
+    document.getElementById("sizeStatus").style.color = "red";
+  }else{
+    document.getElementById("sizeStatus").innerHTML =
+    "✅ Size available for booking";
+    document.getElementById("sizeStatus").style.color = "green";
   }
 }
 
