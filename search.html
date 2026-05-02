@@ -111,6 +111,12 @@ const aliases = {
 
   "top":"tops",
   "tops":"tops"
+
+  "bridal makeup":"bridalmakeup",
+"party makeup":"partymakeup",
+"wedding hall":"weddinghall",
+"birthday hall":"birthdayhall",
+"party hall":"birthdayhall"
 };
 
 query = aliases[query] || query;
@@ -236,6 +242,30 @@ const productDatabase = {
 "Classic Casual Collection","Modern Street Fashion","Premium Summer Wear",
 "Minimal Daily Outfit","Luxury Trend Collection","Celebrity Inspired Top",
 "Designer Everyday Wear","Fashion Essentials","Premium Style Top"
+],
+
+"bridalmakeup":[
+"Royal Bridal Glam","HD Bridal Finish","Luxury Wedding Makeup",
+"Celebrity Bridal Look","Classic Bridal Glow","Airbrush Bridal Package",
+"Premium Wedding Artist","Traditional Bridal Elegance"
+],
+
+"partymakeup":[
+"Party Glow Session","Evening Glam Look","Cocktail Makeup Package",
+"Minimal Party Makeup","Luxury Party Artist","HD Party Finish",
+"Night Glam Session","Soft Glam Package"
+],
+
+"weddinghall":[
+"Grand Palace Hall","Royal Wedding Arena","Luxury Banquet Hall",
+"Classic Celebration Hall","Premium Wedding Venue","Elite Marriage Hall",
+"Golden Palace Venue","Grand Heritage Hall"
+],
+
+"birthdayhall":[
+"Fun Fiesta Hall","Kids Celebration Zone","Party Arena Hall",
+"Happy Moments Venue","Balloon Theme Hall","Premium Birthday Lounge",
+"Celebration Hub","Party Palace Hall"
 ]
 
 };
@@ -512,6 +542,50 @@ const products = productDatabase[query] || [];
 {shop:"Fashion Point",location:"Hazratganj, Lucknow"},
 {shop:"Trendy Threads",location:"Vijayanagar, Mysore"},
 {shop:"Modern Edit",location:"Vijay Nagar, Indore"}
+],
+
+   "bridalmakeup":[
+{shop:"Glow Bridal Studio",location:"Jayanagar, Bangalore"},
+{shop:"Aura Makeup Artist",location:"Indiranagar, Bangalore"},
+{shop:"Luxury Bridal Looks",location:"Bandra, Mumbai"},
+{shop:"Wedding Face Art",location:"CP, Delhi"},
+{shop:"Elite Bridal Touch",location:"Banjara Hills, Hyderabad"},
+{shop:"Royal Makeup Studio",location:"T Nagar, Chennai"},
+{shop:"HD Bridal Hub",location:"Koregaon Park, Pune"},
+{shop:"Makeup Masters",location:"Vijayanagar, Mysore"}
+],
+
+"partymakeup":[
+{shop:"Party Glam Studio",location:"Koramangala, Bangalore"},
+{shop:"Glow Up Artist",location:"Bandra, Mumbai"},
+{shop:"Evening Luxe",location:"CP, Delhi"},
+{shop:"Beauty Lounge",location:"Anna Nagar, Chennai"},
+{shop:"Makeover Studio",location:"Banjara Hills, Hyderabad"},
+{shop:"Soft Glam Hub",location:"Koregaon Park, Pune"},
+{shop:"Luxury Looks",location:"MG Road, Bangalore"},
+{shop:"Party Touch",location:"Vijayanagar, Mysore"}
+],
+
+"weddinghall":[
+{shop:"Grand Palace Hall",location:"MG Road, Bangalore"},
+{shop:"Royal Convention",location:"Bandra, Mumbai"},
+{shop:"Wedding Crown Venue",location:"Delhi"},
+{shop:"Luxury Banquets",location:"Chennai"},
+{shop:"Elite Hall Arena",location:"Hyderabad"},
+{shop:"Celebration Palace",location:"Pune"},
+{shop:"Heritage Weddings",location:"Mysore"},
+{shop:"Golden Halls",location:"Bangalore"}
+],
+
+"birthdayhall":[
+{shop:"Party Planet",location:"Koramangala, Bangalore"},
+{shop:"Kids Fiesta Hall",location:"Mumbai"},
+{shop:"Fun Arena",location:"Delhi"},
+{shop:"Birthday Bliss",location:"Chennai"},
+{shop:"Celebration Hub",location:"Hyderabad"},
+{shop:"Happy Hall",location:"Pune"},
+{shop:"Joy Venue",location:"Mysore"},
+{shop:"Fun Palace",location:"Bangalore"}
 ]
 
 };
