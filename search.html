@@ -51,6 +51,50 @@ h1{
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
   letter-spacing:1px;
 }
+
+  @media screen and (max-width:768px){
+
+  .results{
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+
+  .card{
+    border-radius:10px;
+  }
+
+  .card img{
+    height:220px;
+    object-fit:cover;
+    transform:none;
+  }
+
+  .info{
+    padding:8px;
+  }
+
+  .info h3{
+    font-size:14px;
+    margin:4px 0;
+    line-height:1.3;
+  }
+
+  .info p{
+    font-size:11px;
+    margin:2px 0;
+    color:#666;
+  }
+
+  .premium-heading{
+    font-size:22px;
+    padding:12px;
+    margin-bottom:18px;
+  }
+
+  body{
+    padding:10px;
+  }
+}
 </style>
 </head>
 <body>
