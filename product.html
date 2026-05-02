@@ -197,11 +197,12 @@ button{
 
       <h2 id="productName"></h2>
 
-      <div class="price">₹100 / hour</div>
+      <div class="price" id="priceTag">₹100 / hour</div>
 
       <div class="info-box">
         <p><b>🏪 Shop:</b> Royal Rentals</p>
         <p><b>📍 Location:</b> Bangalore</p>
+        <p><b>📞 Contact:</b> +91 9876543210</p>
       </div>
 
       <div class="info-box">
@@ -348,11 +349,23 @@ document.getElementById("reviewContainer").innerHTML = reviewHTML;
   `;
 }
 
-if(item === "jewellery"){
-  document.getElementById("sizeSection").style.display = "none";
+if(
+ item === "jewellery" ||
+ item === "bridalmakeup" ||
+ item === "partymakeup" ||
+ item === "weddinghall" ||
+ item === "birthdayhall"
+){
+ document.getElementById("sizeSection").style.display = "none";
+}
+document.getElementById("productName").innerText = product;
+  if(item === "bridalmakeup" || item === "partymakeup"){
+  document.getElementById("priceTag").innerText = "₹3000 / session";
 }
 
-document.getElementById("productName").innerText = product;
+if(item === "weddinghall" || item === "birthdayhall"){
+  document.getElementById("priceTag").innerText = "₹500 / hour";
+}
 
 document.getElementById("productImg").src =
 "images/" + item + "/" + id + ".jpg";
