@@ -221,21 +221,21 @@ button{
         <p id="price"></p>
       </div>
 
-      <div class="info-box">
-        <h3>Select Size</h3>
+     <div class="info-box" id="sizeSection">
+  <h3 id="sizeTitle">Select Size</h3>
 
-<div class="sizes">
-  <div class="size" onclick="checkSize(this)">XS</div>
-  <div class="size" onclick="checkSize(this)">S</div>
-  <div class="size" onclick="checkSize(this)">M</div>
-  <div class="size" onclick="checkSize(this)">L</div>
-  <div class="size" onclick="checkSize(this)">XL</div>
-  <div class="size" onclick="checkSize(this)">XXL</div>
-  <div class="size" onclick="checkSize(this)">XXXL</div>
+  <div class="sizes" id="sizesContainer">
+    <div class="size" onclick="checkSize(this)">XS</div>
+    <div class="size" onclick="checkSize(this)">S</div>
+    <div class="size" onclick="checkSize(this)">M</div>
+    <div class="size" onclick="checkSize(this)">L</div>
+    <div class="size" onclick="checkSize(this)">XL</div>
+    <div class="size" onclick="checkSize(this)">XXL</div>
+    <div class="size" onclick="checkSize(this)">XXXL</div>
+  </div>
+
+  <p id="sizeStatus" style="margin-top:12px;font-weight:bold;"></p>
 </div>
-
-<p id="sizeStatus" style="margin-top:12px;font-weight:bold;"></p>
-      </div>
 
     </div>
   </div>
@@ -285,6 +285,21 @@ const params = new URLSearchParams(window.location.search);
 const item = params.get("item");
 const id = params.get("id");
 const product = params.get("product");
+  if(item === "footwear"){
+  document.getElementById("sizeTitle").innerText = "Select Footwear Size";
+
+  document.getElementById("sizesContainer").innerHTML = `
+    <div class="size" onclick="checkSize(this)">6</div>
+    <div class="size" onclick="checkSize(this)">7</div>
+    <div class="size" onclick="checkSize(this)">8</div>
+    <div class="size" onclick="checkSize(this)">9</div>
+    <div class="size" onclick="checkSize(this)">10</div>
+  `;
+}
+
+if(item === "jewellery"){
+  document.getElementById("sizeSection").style.display = "none";
+}
 
 document.getElementById("productName").innerText = product;
 
