@@ -241,27 +241,15 @@ button{
   </div>
 
   <div class="reviews">
-    <h2>⭐ Reviews & Ratings</h2>
+  <h2>⭐ Reviews & Ratings</h2>
 
-    <div class="review">⭐⭐⭐⭐⭐ Amazing quality and premium fabric.</div>
-    <div class="review">⭐⭐⭐⭐ Perfect fitting and clean outfit.</div>
-    <div class="review">⭐⭐⭐⭐⭐ Delivery was very fast.</div>
-    <div class="review">⭐⭐⭐⭐ Worth every rupee.</div>
-    <div class="review">⭐⭐⭐⭐⭐ Will rent again.</div>
+  <div id="reviewContainer"></div>
 
-    <div id="moreReviews" class="hidden">
-      <div class="review">⭐⭐⭐⭐ Excellent stitching.</div>
-      <div class="review">⭐⭐⭐⭐⭐ Looked brand new.</div>
-      <div class="review">⭐⭐⭐⭐ Nice packaging.</div>
-      <div class="review">⭐⭐⭐⭐⭐ Customer support was helpful.</div>
-      <div class="review">⭐⭐⭐⭐ Great rental experience.</div>
-    </div>
-
-    <br>
-    <button class="primary-btn" onclick="showMoreReviews()">
-      See More Reviews
-    </button>
-  </div>
+  <br>
+  <button class="primary-btn" onclick="showMoreReviews()">
+    See More Reviews
+  </button>
+</div>
 
   <div class="payment">
     <h2>Payment Options</h2>
@@ -285,6 +273,69 @@ const params = new URLSearchParams(window.location.search);
 const item = params.get("item");
 const id = params.get("id");
 const product = params.get("product");
+
+  const reviewData = {
+  default: [
+    "⭐⭐⭐⭐⭐ Amazing quality and premium fabric.",
+    "⭐⭐⭐⭐ Perfect fitting and clean outfit.",
+    "⭐⭐⭐⭐⭐ Delivery was very fast.",
+    "⭐⭐⭐⭐ Worth every rupee.",
+    "⭐⭐⭐⭐⭐ Will rent again.",
+    "⭐⭐⭐⭐ Excellent stitching.",
+    "⭐⭐⭐⭐⭐ Looked brand new.",
+    "⭐⭐⭐⭐ Nice packaging.",
+    "⭐⭐⭐⭐⭐ Customer support was helpful.",
+    "⭐⭐⭐⭐ Great rental experience."
+  ],
+
+  footwear: [
+    "⭐⭐⭐⭐⭐ Very comfortable to wear.",
+    "⭐⭐⭐⭐ Looked stylish and trendy.",
+    "⭐⭐⭐⭐⭐ Perfect fit and clean condition.",
+    "⭐⭐⭐⭐ Great quality footwear.",
+    "⭐⭐⭐⭐⭐ Heels were stable and comfortable.",
+    "⭐⭐⭐⭐ Premium finish.",
+    "⭐⭐⭐⭐⭐ Worth renting.",
+    "⭐⭐⭐⭐ Delivery was on time.",
+    "⭐⭐⭐⭐ Good collection available.",
+    "⭐⭐⭐⭐⭐ Will order again."
+  ],
+
+  jewellery: [
+    "⭐⭐⭐⭐⭐ Looked luxurious and elegant.",
+    "⭐⭐⭐⭐ Perfect for weddings.",
+    "⭐⭐⭐⭐⭐ Jewellery was shiny and premium.",
+    "⭐⭐⭐⭐ Great finishing and detailing.",
+    "⭐⭐⭐⭐⭐ Looked exactly like pictures.",
+    "⭐⭐⭐⭐ Packaging was secure.",
+    "⭐⭐⭐⭐⭐ Premium bridal collection.",
+    "⭐⭐⭐⭐ Elegant design.",
+    "⭐⭐⭐⭐ Worth the rental price.",
+    "⭐⭐⭐⭐⭐ Received many compliments."
+  ]
+};
+  let selectedReviews = reviewData.default;
+
+if(item === "footwear"){
+  selectedReviews = reviewData.footwear;
+}
+
+if(item === "jewellery"){
+  selectedReviews = reviewData.jewellery;
+}
+
+let reviewHTML = "";
+
+selectedReviews.forEach((review,index)=>{
+  reviewHTML += `
+    <div class="review ${index >= 5 ? 'hidden extra-review' : ''}">
+      ${review}
+    </div>
+  `;
+});
+
+document.getElementById("reviewContainer").innerHTML = reviewHTML;
+  
   if(item === "footwear"){
   document.getElementById("sizeTitle").innerText = "Select Footwear Size";
 
@@ -357,7 +408,9 @@ function placeOrder(){
 }
 
 function showMoreReviews(){
-  document.getElementById("moreReviews").style.display="block";
+  document.querySelectorAll(".extra-review").forEach(r=>{
+    r.style.display = "block";
+  });
 }
 </script>
 
